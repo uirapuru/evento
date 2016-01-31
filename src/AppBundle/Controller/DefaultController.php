@@ -1,0 +1,73 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Command\CreateWorkshop;
+use AppBundle\Entity\Workshop;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class DefaultController extends Controller
+{
+    /**
+     * @Route("/", name="evento_homepage")
+     * @Template()
+     */
+    public function indexAction(Request $request)
+    {
+        return [
+            "workshops" => $this->getDoctrine()->getManager()->getRepository("AppBundle:Workshop")->findBy(
+                [], ["startDate" => "DESC"], 10, 0
+            )
+        ];
+    }
+
+    /**
+     * @Route("/rejestracja.html", name="evento_register")
+     * @Template()
+     */
+    public function registerAction(Request $request)
+    {
+        $response = new Response(null, 200);
+
+        $form = $this->createForm("register_workshops_form_type", new CreateWorkshop(), [
+            "action" => $this->generateUrl("evento_register"),
+            "method" => "POST"
+        ]);
+
+        if($request->isMethod("POST"))
+        {
+            $form->handleRequest($request);
+            if($form->isValid())
+            {
+                $this->get("tactician.commandbus")->handle($form->getData());
+                $this->addFlash("success", "Dziękujemy za dodanie nowej informacji, po weryfikacji przez moderatora pojawi się w bazie");
+                $this->redirectToRoute("evento_homepage");
+            } else {
+                $response->setStatusCode(400);
+            }
+        }
+
+        return $this->render("AppBundle:Default:register.html.twig", [
+            "form" => $form->createView(),
+        ], $response);
+    }
+
+    /**
+     * @Route("/{slug}", name="evento_show")
+     * @ParamConverter("workshop", class="AppBundle:Workshop")
+     * @Template()
+     * @param Request $request
+     * @param Workshop $workshop
+     * @return array
+     */
+    public function showAction(Request $request, Workshop $workshop){
+        return [
+            "workshop" => $workshop
+        ];
+    }
+}

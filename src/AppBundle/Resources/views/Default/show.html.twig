@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{ workshop.title }} <small>{{ workshop.city }}</small></h1>
+    </div>
+
+    <div class="jumbotron">
+        <h2>cos</h2>
+        <p class="lead">
+            {{ workshop.description }}
+        </p>
+    </div>
+
+    <div class="row marketing">
+        {% for lesson in workshop.lessons %}
+            <div class="col-lg-12">
+                <h4>{{ lesson.title }} <small>{{ lesson.startDate|date("m.d.Y H:i") }} do {{ lesson.endDate|date("H:i") }}</small><br /></h4>
+
+                <small>{{ lesson.address }}, {{ lesson.city }}</small>
+                <p>{{ lesson.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+

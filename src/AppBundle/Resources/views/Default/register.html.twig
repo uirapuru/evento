@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.slug) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.startDate) }}
+        {{ form_row(form.endDate) }}
+
+    <div class="form-group">
+        {{ form_label(form.lessons) }}
+
+        <div class="col-sm-10">
+
+        <ul class="lessons" data-prototype="{{ form_widget(form.lessons.vars.prototype)|e }}">
+            {% for lesson in form.lessons %}
+                <li>{{ form_widget(lesson) }}</li>
+            {% endfor %}
+        </ul>
+
+        </div>
+    </div>
+
+
+
+        {{ form_row(form.url) }}
+        {{ form_row(form.phone) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        var $collectionHolder;
+        // setup an "add a lesson" link
+        var $addLessonLink = $('<a href="#" class="btn btn-default">Add a lesson</a>');
+        var $newLinkLi = $('<li></li>').append($addLessonLink);
+
+        function addLessonForm($collectionHolder, $newLinkLi) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a lesson" link li
+            var $newFormLi = $('<li></li>').append(newForm);
+            $newLinkLi.before($newFormLi);
+        }
+
+        $(function () {
+            // Get the ul that holds the collection of lessons
+            $collectionHolder = $('ul.lessons');
+
+            // add the "add a lesson" anchor and li to the lessons ul
+            $collectionHolder.append($newLinkLi);
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+            $addLessonLink.on('click', function (e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new lesson form (see next code block)
+                addLessonForm($collectionHolder, $newLinkLi);
+            });
+        });
+    </script>
+{% endblock javascripts %}

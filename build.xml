@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="evento" default="list-tasks" basedir=".">
+    <property file="${project.basedir}/app/config/phing.ini" />
+
+    <!--<import file="vendor/dende/common-bundle/Dende/CommonBundle/Resources/phing/database.xml" />-->
+    <!--<import file="vendor/dende/common-bundle/Dende/CommonBundle/Resources/phing/testing.xml" />-->
+
+    <target name="list-tasks" hidden="true">
+        <exec command="./bin/phing -f ${phing.file} -l" outputProperty="phing_targets" />
+        <echo>${phing_targets}</echo>
+    </target>
+
+    <target name="rebuild-project" description="Brings project to default state">
+        <phingcall target="reset-db" />
+    </target>
+
+    <target name="reset-db" description="Resets database to default state">
+        <propertyprompt propertyName="env" promptText="Name of environment, available: ${available_environments}" promptCharacter="?" useExistingValue="true" defaultValue="${default_environment}" />
+
+        <echo>Dropping schema - ${env} environment</echo>
+        <exec executable="${php_exec}" checkreturn="true" passthru="true">
+            <arg value="${symfony_console}" />
+            <arg value="doctrine:schema:drop" />
+            <arg value="--em=${default_entity_manager}" />
+            <arg value="--env=${env}" />
+            <arg value="--force" />
+            <arg value="--no-interaction" />
+        </exec>
+
+        <echo>Creating new schema - ${env} environment</echo>
+        <exec executable="${php_exec}" checkreturn="true" passthru="true">
+            <arg value="${symfony_console}" />
+            <arg value="doctrine:schema:create" />
+            <arg value="--em=${default_entity_manager}" />
+            <arg value="--env=${env}" />
+            <arg value="--no-interaction" />
+        </exec>
+
+        <echo>Loading fixtures - ${env} environment</echo>
+        <exec executable="${php_exec}" checkreturn="true" passthru="true">
+            <arg value="${symfony_console}" />
+            <!--<arg value="doctrine:fixtures:load" />-->
+            <arg value="hautelook_alice:fixtures:load" />
+            <!--<arg value="&#45;&#45;em=${default_entity_manager}" />-->
+            <arg value="--env=${env}" />
+            <arg value="--no-interaction" />
+            <!--<arg value="&#45;&#45;fixtures=${fixtures}" />-->
+        </exec>
+    </target>
+
+</project>

@@ -1,0 +1,44 @@
+---
+parameters:
+  workshop.class: AppBundle\Entity\Workshop
+  lesson.class: AppBundle\Entity\Lesson
+
+services:
+  app.form.register_workshops_form_type:
+    class: AppBundle\Form\RegisterWorkshopsFormType
+    tags:
+        - { name: form.type, alias: register_workshops_form_type }
+
+  app.repository.workshop:
+    class: AppBundle\Entity\WorkshopRepository
+    factory: [@doctrine.orm.entity_manager, getRepository]
+    arguments:
+      - %workshop.class%
+
+  app.repository.lesson:
+    class: AppBundle\Entity\LessonRepository
+    factory: [@doctrine.orm.entity_manager, getRepository]
+    arguments:
+      - %lesson.class%
+
+  app.handler.create_workshop:
+    class: AppBundle\Handler\CreateWorkshopHandler
+    arguments:
+      - @app.factory.workshop
+      - @app.repository.workshop
+      - @app.factory.lesson
+    tags:
+      - {name: tactician.handler, command: AppBundle\Command\CreateWorkshop }
+
+  app.generator.null:
+    class: AppBundle\Generator\NullGenerator
+
+  app.factory.workshop:
+    class: AppBundle\Factory\WorkshopFactory
+    arguments:
+      - @app.generator.null
+
+  app.factory.lesson:
+    class: AppBundle\Factory\LessonFactory
+    arguments:
+      - @app.generator.null

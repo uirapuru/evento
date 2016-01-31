@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+            <link rel="stylesheet" href="{{ asset("bundles/app/css/jumbotron-narrow.css") }}" />
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="header clearfix">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation" class="active"><a href="{{ path("evento_homepage") }}">Główna</a></li>
+                        <li role="presentation"><a href="#">Szukaj</a></li>
+                        <li role="presentation"><a href="#">Kalendarz</a></li>
+                        <li role="presentation"><a href="{{ path("evento_register") }}">Zarejestruj</a></li>
+                    </ul>
+                </nav>
+                <h3 class="text-muted">Evento</h3>
+            </div>
+
+            {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">{{ flash_message }}</div>
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+
+            <footer class="footer">
+                <p>&copy; {{ "now"|date("Y") }} Dende, Grzegorz 'Uirapuru' Kaszuba</p>
+            </footer>
+
+        </div> <!-- /container -->
+
+        {% block javascripts %}
+            <script src="//code.jquery.com/jquery-2.2.0.min.js" crossorigin="anonymous"></script>
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js" crossorigin="anonymous"></script>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        {% endblock %}
+    </body>
+
+</html>

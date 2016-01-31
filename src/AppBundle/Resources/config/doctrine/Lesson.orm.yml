@@ -1,0 +1,45 @@
+---
+AppBundle\Entity\Lesson:
+  type:   entity
+  table:  lessons
+  repositoryClass:  AppBundle\Entity\LessonRepository
+
+  id:
+    id:
+      type: guid
+      generator: { strategy: UUID }
+
+  manyToOne:
+    workshop:
+      targetEntity: AppBundle\Entity\Workshop
+      inversedBy: lessons
+      cascade: ["all"]
+
+  fields:
+    title:
+      type: string
+      nullable: false
+
+    description:
+        type: text
+        nullable: false
+
+    startDate:
+      type: datetime
+
+    endDate:
+      type: datetime
+
+    address:
+      type: string
+
+    city:
+      type: string
+
+    latitude:
+      type: string
+      nullable: true
+
+    longitude:
+      type: string
+      nullable: true
