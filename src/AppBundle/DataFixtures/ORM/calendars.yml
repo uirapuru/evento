@@ -1,0 +1,6 @@
+---
+Dende\Calendar\Domain\Calendar:
+  calendar_{1..10}:
+    __construct:
+      - null
+      - <sentence(2)>

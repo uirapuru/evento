@@ -17,7 +17,7 @@
                     <ul class="nav nav-pills pull-right">
                         <li role="presentation" class="active"><a href="{{ path("evento_homepage") }}">Główna</a></li>
                         <li role="presentation"><a href="#">Szukaj</a></li>
-                        <li role="presentation"><a href="#">Kalendarz</a></li>
+                        <li role="presentation"><a href="{{ path("evento_schedule") }}">Kalendarz</a></li>
                         <li role="presentation"><a href="{{ path("evento_register") }}">Zarejestruj</a></li>
                     </ul>
                 </nav>
@@ -37,6 +37,8 @@
         </div> <!-- /container -->
 
         {% block javascripts %}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
             <script src="//code.jquery.com/jquery-2.2.0.min.js" crossorigin="anonymous"></script>
             <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js" crossorigin="anonymous"></script>
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

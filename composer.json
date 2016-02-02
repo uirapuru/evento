@@ -26,7 +26,8 @@
         "league/tactician-bundle": "^0.4.0",
         "sensio/framework-extra-bundle": "^3.0",
         "dende/calendar-bundle": "dev-master",
-        "knplabs/doctrine-behaviors": "~1.1"
+        "knplabs/doctrine-behaviors": "~1.1",
+        "friendsofsymfony/jsrouting-bundle": "^1.5"
     },
     "require-dev": {
         "behat/behat": "^3.0",
@@ -66,13 +67,11 @@
     },
     "autoload": {
         "psr-0": {
-            "": "src/",
-            "Dende\\CalendarBundle": "vendor/dende/calendar-bundle/"
+            "": "src/"
         },
         "psr-4": {
             "": "src/",
-            "SymfonyStandard\\": "app/",
-            "Dende\\CalendarBundle\\": "vendor/dende/calendar-bundle/"
+            "SymfonyStandard\\": "app/"
         },
         "classmap": [
             "app/AppKernel.php",

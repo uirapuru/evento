@@ -1,3 +1,11 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+dende_calendar:
+  type: annotation
+  resource: @DendeCalendarBundle/Controller/DefaultController.php
+  prefix: calendar

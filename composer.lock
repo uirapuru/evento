@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1fa4b8ae4550ee7ef888b46ca050fcea",
-    "content-hash": "07045d8863bdc64a3894aac6174b047d",
+    "hash": "5e70856ae87fbcf9806436eb5bc990b6",
+    "content-hash": "f8d83aa1c4798ed2132587e5280f0afc",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -111,12 +111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/UirapuruDende/Calendar.git",
-                "reference": "6c839cc4b6d086f504e7e6e4d9c05b9f48e43fdc"
+                "reference": "13e4903f31aa05e4fdcb12e458a2e76f0918ef52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UirapuruDende/Calendar/zipball/6c839cc4b6d086f504e7e6e4d9c05b9f48e43fdc",
-                "reference": "6c839cc4b6d086f504e7e6e4d9c05b9f48e43fdc",
+                "url": "https://api.github.com/repos/UirapuruDende/Calendar/zipball/13e4903f31aa05e4fdcb12e458a2e76f0918ef52",
+                "reference": "13e4903f31aa05e4fdcb12e458a2e76f0918ef52",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +146,7 @@
                 }
             ],
             "description": "PHP Calendar component",
-            "time": "2016-01-21 00:11:37"
+            "time": "2016-01-31 14:52:23"
         },
         {
             "name": "dende/calendar-bundle",
@@ -1157,24 +1157,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "889208985fea32c68df24656e1c7ac7326980a4d"
+                "reference": "518194b0e92dc75e791490b36b51cce39fe80bcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/889208985fea32c68df24656e1c7ac7326980a4d",
-                "reference": "889208985fea32c68df24656e1c7ac7326980a4d",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/518194b0e92dc75e791490b36b51cce39fe80bcf",
+                "reference": "518194b0e92dc75e791490b36b51cce39fe80bcf",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
-                "php": ">=5.3.6",
-                "sebastian/diff": "~1.1",
-                "symfony/console": "~2.3|~3.0",
-                "symfony/event-dispatcher": "~2.1|~3.0",
-                "symfony/filesystem": "~2.1|~3.0",
-                "symfony/finder": "~2.1|~3.0",
-                "symfony/process": "~2.3|~3.0",
-                "symfony/stopwatch": "~2.5|~3.0"
+                "php": "^5.3.6 || ^7.0",
+                "sebastian/diff": "^1.1",
+                "symfony/console": "^2.3 || ^3.0",
+                "symfony/event-dispatcher": "^2.1 || ^3.0",
+                "symfony/filesystem": "^2.1 || ^3.0",
+                "symfony/finder": "^2.1 || ^3.0",
+                "symfony/process": "^2.3 || ^3.0",
+                "symfony/stopwatch": "^2.5 || ^3.0"
             },
             "require-dev": {
                 "satooshi/php-coveralls": "^1.0"
@@ -1190,7 +1190,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Symfony\\CS\\": "src/"
+                    "PhpCsFixer\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1208,7 +1208,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2016-01-29 20:35:57"
+            "time": "2016-02-01 02:32:56"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
@@ -1940,12 +1940,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "4423941779bc1448c49447c57be15506733a35c8"
+                "reference": "b65e467e11dd89ab5de2345e01e92f707b9db48d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/4423941779bc1448c49447c57be15506733a35c8",
-                "reference": "4423941779bc1448c49447c57be15506733a35c8",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/b65e467e11dd89ab5de2345e01e92f707b9db48d",
+                "reference": "b65e467e11dd89ab5de2345e01e92f707b9db48d",
                 "shasum": ""
             },
             "require": {
@@ -2000,7 +2000,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2016-01-28 21:35:20"
+            "time": "2016-01-31 19:17:32"
         },
         {
             "name": "monolog/monolog",
@@ -3071,12 +3071,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/monolog-bundle.git",
-                "reference": "95cf1421823fe84b2993e1b38f07e33dda4339b2"
+                "reference": "c25e740ae9addc7309090122229929e84a3b9ba1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/95cf1421823fe84b2993e1b38f07e33dda4339b2",
-                "reference": "95cf1421823fe84b2993e1b38f07e33dda4339b2",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/c25e740ae9addc7309090122229929e84a3b9ba1",
+                "reference": "c25e740ae9addc7309090122229929e84a3b9ba1",
                 "shasum": ""
             },
             "require": {
@@ -3122,7 +3122,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2016-01-29 10:48:16"
+            "time": "2016-02-01 10:54:01"
         },
         {
             "name": "symfony/polyfill-apcu",
@@ -3699,12 +3699,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "8a95ec5303189727680198ffef30a37e7b4a3807"
+                "reference": "6232b23591ab67bf3679bb21a7ba48756a294306"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/8a95ec5303189727680198ffef30a37e7b4a3807",
-                "reference": "8a95ec5303189727680198ffef30a37e7b4a3807",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/6232b23591ab67bf3679bb21a7ba48756a294306",
+                "reference": "6232b23591ab67bf3679bb21a7ba48756a294306",
                 "shasum": ""
             },
             "require": {
@@ -3825,7 +3825,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-01-30 15:58:35"
+            "time": "2016-01-31 07:33:49"
         },
         {
             "name": "twig/twig",
@@ -3833,12 +3833,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "892302f8487147f8aee6a2554349c7955894f046"
+                "reference": "2ed184ec2df1c05eb1935b13b01280965bd2c856"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/892302f8487147f8aee6a2554349c7955894f046",
-                "reference": "892302f8487147f8aee6a2554349c7955894f046",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/2ed184ec2df1c05eb1935b13b01280965bd2c856",
+                "reference": "2ed184ec2df1c05eb1935b13b01280965bd2c856",
                 "shasum": ""
             },
             "require": {
@@ -3887,7 +3887,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-01-27 05:49:29"
+            "time": "2016-01-31 08:00:54"
         },
         {
             "name": "willdurand/hateoas",
@@ -4598,12 +4598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "1039b239eaf5ea865ded8e403dc707da6a629474"
+                "reference": "b312ab9d0c446971069e22a524fec01c7cddc75e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/1039b239eaf5ea865ded8e403dc707da6a629474",
-                "reference": "1039b239eaf5ea865ded8e403dc707da6a629474",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/b312ab9d0c446971069e22a524fec01c7cddc75e",
+                "reference": "b312ab9d0c446971069e22a524fec01c7cddc75e",
                 "shasum": ""
             },
             "require": {
@@ -4640,7 +4640,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-01-27 08:28:58"
+            "time": "2016-02-01 17:08:46"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -6247,12 +6247,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "b498dbe072cf95e3fda59a27f06ac572602471c8"
+                "reference": "0f9a204a82b477530b5d2c6e02de48d4979f1f35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b498dbe072cf95e3fda59a27f06ac572602471c8",
-                "reference": "b498dbe072cf95e3fda59a27f06ac572602471c8",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/0f9a204a82b477530b5d2c6e02de48d4979f1f35",
+                "reference": "0f9a204a82b477530b5d2c6e02de48d4979f1f35",
                 "shasum": ""
             },
             "require": {
@@ -6316,7 +6316,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-01-29 01:31:45"
+            "time": "2016-02-01 22:26:48"
         },
         {
             "name": "theseer/fdomdocument",

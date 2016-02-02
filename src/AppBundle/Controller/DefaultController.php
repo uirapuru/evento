@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -57,8 +58,30 @@ class DefaultController extends Controller
         ], $response);
     }
 
+
     /**
-     * @Route("/{slug}", name="evento_show")
+     * @Route("/kalendarz.html", name="evento_schedule")
+     * @Template()
+     * @param Request $request
+     * @return array
+     */
+    public function calendarAction(Request $request) {
+        return [];
+    }
+
+    /**
+     * @Route("/calendar.json", name="evento_schedule_events")
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function eventsAction(Request $request) {
+        $data = [];
+
+        return new JsonResponse($this->get("jms_serializer")->serialize($data, "json"));
+    }
+
+    /**
+     * @Route("/{slug}.html", name="evento_show")
      * @ParamConverter("workshop", class="AppBundle:Workshop")
      * @Template()
      * @param Request $request

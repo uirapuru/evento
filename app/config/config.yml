@@ -53,7 +53,15 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        auto_mapping: false
+        mappings:
+          AppBundle: ~
+          DendeCalendarBundle:
+            mapping:    true
+            dir:        Resources/config/doctrine
+            prefix:     Dende\Calendar\Domain
+            alias:      Calendar
+            is_bundle:  true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -71,3 +79,7 @@ knp_doctrine_behaviors:
     loggable:       ~
     sluggable:      true
     soft_deletable: true
+
+dende_calendar:
+  model_manager_name:   default
+  backend_type:         ORM

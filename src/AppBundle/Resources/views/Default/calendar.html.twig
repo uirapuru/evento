@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="calendar"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% set lang = calendarLang is defined ? calendarLang : 'pl' %}
+    {% set club = app.session.get('current_club') %}
+
+    <script src='{{ asset("bundles/dendecalendar/js/jquery.min.js") }}'></script>
+    <script src='{{ asset("bundles/dendecalendar/js/moment.js") }}'></script>
+    <script src='{{ asset("bundles/dendecalendar/js/fullcalendar.js") }}'></script>
+    <script src='{{ asset("bundles/dendecalendar/js/lang/" ~ lang ~ ".js") }}'></script>
+
+    <script>
+        var eventClickHandler = function() {};
+        var dende_calendar_lang = 'pl_PL';
+        var dende_calendar_tz = 'Europe/Warsaw';
+
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                defaultView: 'agendaWeek',
+                allDaySlot: false,
+                slotDuration: '00:30:00',
+                minTime: '12:00',
+                maxTime: '22:00',
+                timeZone: dende_calendar_tz,
+                slotLabelFormat: 'H:00',
+                selectable: false,
+                lang: dende_calendar_lang,
+                events: Routing.generate('evento_schedule_events'),
+                contentHeight: "auto",
+                height: "auto",
+                editable: false,
+                eventStartEditable: false,
+                eventDurationEditable: false,
+                columnFormat: 'ddd'
+            })
+        });
+
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel='stylesheet' href="{{ asset('bundles/dendecalendar/css/fullcalendar.css') }}" />
+{% endblock stylesheets %}

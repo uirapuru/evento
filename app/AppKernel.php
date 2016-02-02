@@ -18,6 +18,9 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new League\Tactician\Bundle\TacticianBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Dende\CommonBundle\DendeCommonBundle(),
+            new Dende\CalendarBundle\DendeCalendarBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
