@@ -72,17 +72,13 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/calendar.json", name="evento_schedule_events")
+     * @Route("/search.html", name="evento_search")
+     * @Template()
      * @param Request $request
-     * @return JsonResponse
+     * @return array
      */
-    public function eventsAction(Request $request) {
-        $startDate = Carbon::parse($request->get("start"));
-        $endDate = Carbon::parse($request->get("end"));
-
-        $data = $this->get("dende_calendar.occurrences_repository")->findByPeriod($startDate, $endDate);
-
-        return new Response($this->get("jms_serializer")->serialize($data, "json"));
+    public function searchAction(Request $request){
+        return [];
     }
 
     /**
