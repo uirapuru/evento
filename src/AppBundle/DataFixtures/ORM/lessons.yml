@@ -1,13 +1,14 @@
 ---
 AppBundle\Entity\Lesson:
   lesson_{1..100}:
-    id:           ~
-    title:        <sentence()>
-    description:  <text(200)>
-    startDate:    <dateTimeBetween('-10 days', '0 days')>
-    endDate:      <dateTimeBetween('0 days', '+10 days')>
-    workshop:     @workshop_<numberBetween(1,10)>
-    address:      <address()>
-    city:         <city()>
-    latitude:     0
-    longitude:    0
+    id:                     ~
+    title:                  "[title] <sentence()>"
+    description:            "[desc] <text(200)>"
+    startDate:              <dateTimeBetween('-10 days', '0 days')>
+    endDate:                <dateTimeBetween('0 days', '+10 days')>
+    workshop:               @workshop_<numberBetween(1,10)>
+    address:                <address()>
+    city:                   <city()>
+    latitude:               0
+    longitude:              0
+    event:                  @event_<numberBetween(1,100)>

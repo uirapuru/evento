@@ -1,0 +1,18 @@
+---
+Dende\Calendar\Domain\Calendar\Event\Duration (local):
+  occurrence_duration_1:
+    __construct:  [30]
+  occurrence_duration_2:
+    __construct:  [60]
+  occurrence_duration_3:
+    __construct:  [90]
+  occurrence_duration_4:
+    __construct:  [120]
+
+Dende\Calendar\Domain\Calendar\Event\Occurrence: #$id, DateTime $startDate, Duration $duration, Event $event
+  occurrence_{1..100}:
+    __construct:
+      - null
+      - <dateTimeBetween('-14 days', '14 days')>
+      - "@occurrence_duration_<numberBetween(1,4)>"
+      - "@event_<numberBetween(1,100)>"

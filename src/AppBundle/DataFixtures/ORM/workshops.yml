@@ -1,13 +1,14 @@
 ---
 AppBundle\Entity\Workshop:
   workshop_{1..10}:
-    title:        <sentence(5)>
-    description:  <text(500)>
-    startDate:    <dateTimeBetween('-10 days', '0 days')>
-    endDate:      <dateTimeBetween('0 days', '+10 days')>
-    user:         ~
-    url:          <url()>
-    phone:        <phoneNumber()>
-    email:        <email()>
-    city:         <city()>
-    slug:         <slug()>
+    title:              "[wstitle] <sentence(5)>"
+    description:        "[wsdesc] <text(500)>"
+    startDate:          <dateTimeBetween('-10 days', '0 days')>
+    endDate:            <dateTimeBetween('0 days', '+10 days')>
+    user:               ~
+    url:                <url()>
+    phone:              <phoneNumber()>
+    email:              <email()>
+    city:               <city()>
+    slug:               <slug()>
+    calendar (unique):  @calendar_<numberBetween(1,10)>

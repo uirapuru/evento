@@ -1,5 +1,6 @@
 <?php
 namespace AppBundle\Entity;
+use Dende\Calendar\Domain\Calendar;
 use Doctrine\Common\Collections\Collection;
 
 /**
@@ -22,6 +23,8 @@ class Workshop
     private $email;
     private $phone;
     private $slug;
+    private $calendar;
+
 
     /**
      * Workshop constructor.
@@ -36,7 +39,7 @@ class Workshop
      * @param $email
      * @param $phone
      */
-    public function __construct($id = null, $title = null, $description = null, $startDate = null, $endDate = null, Collection $lessons = null, $user = null, $url = null, $email = null, $phone = null, $city = null, $slug = null)
+    public function __construct($id = null, $title = null, $description = null, $startDate = null, $endDate = null, Collection $lessons = null, $user = null, $url = null, $email = null, $phone = null, $city = null, $slug = null, Calendar $calendar = null)
     {
         $this->id = $id;
         $this->title = $title;
@@ -50,6 +53,7 @@ class Workshop
         $this->phone = $phone;
         $this->city = $city;
         $this->slug = $slug;
+        $this->calendar = $calendar;
     }
 
     /**
@@ -154,5 +158,13 @@ class Workshop
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return Calendar
+     */
+    public function getCalendar()
+    {
+        return $this->calendar;
     }
 }

@@ -13,32 +13,20 @@ Dende\Calendar\Domain\Calendar\Event\EventType (local):
   event_type_1:
     __construct:
       - single
-  event_type_2:
-    __construct:
-      - weekly
 
 Dende\Calendar\Domain\Calendar\Event\Repetitions (local):
   repetition_1:
     __construct:
-      - [1, 2, 3, 4, 5, 6, 7]
-  repetition_2:
-    __construct:
-      - [1, 3, 5]
-  repetition_3:
-    __construct:
-      - [1]
-  repetition_4:
-    __construct:
-      - [6,7]
+      - []
 
 Dende\Calendar\Domain\Calendar\Event:
   event_{1..100}:
     __construct:
-      - null #id:
-      - "@calendar_<numberBetween(1,10)>" #calendar:
-      - "@event_type_<numberBetween(1,2)>" #eventType:
-      - <dateTimeBetween('-100 days', '0 days')> #startDate:
-      - <dateTimeBetween('0 days','+100 days')> #endDate:
-      - <sentence(5)> #title:
-      - "@repetition_<numberBetween(1,4)>" #repetitions:
+      - null
+      - "@calendar_<numberBetween(1,10)>"
+      - "@event_type_1"
+      - <dateTimeBetween('-14 days', '0 days')>
+      - <dateTimeBetween('0 days','+14 days')>
+      - <sentence(5)>
+      - "@repetition_1"
       - "@event_duration_<numberBetween(1,4)>"

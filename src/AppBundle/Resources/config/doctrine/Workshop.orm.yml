@@ -13,7 +13,12 @@ AppBundle\Entity\Workshop:
     lessons:
       targetEntity: AppBundle\Entity\Lesson
       mappedBy: workshop
-      cascade: ["all"]
+      cascade: ["persist"]
+
+  oneToOne:
+    calendar:
+      targetEntity: Dende\Calendar\Domain\Calendar
+      cascade: ["persist"]
 
   fields:
     title:

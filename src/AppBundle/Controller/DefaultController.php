@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Command\CreateWorkshop;
 use AppBundle\Entity\Workshop;
+use Carbon\Carbon;
+use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -75,9 +77,12 @@ class DefaultController extends Controller
      * @return JsonResponse
      */
     public function eventsAction(Request $request) {
-        $data = [];
+        $startDate = Carbon::parse($request->get("start"));
+        $endDate = Carbon::parse($request->get("end"));
 
-        return new JsonResponse($this->get("jms_serializer")->serialize($data, "json"));
+        $data = $this->get("dende_calendar.occurrences_repository")->findByPeriod($startDate, $endDate);
+
+        return new Response($this->get("jms_serializer")->serialize($data, "json"));
     }
 
     /**

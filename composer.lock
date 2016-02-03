@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e70856ae87fbcf9806436eb5bc990b6",
-    "content-hash": "f8d83aa1c4798ed2132587e5280f0afc",
+    "hash": "53f374402271fe62d243307cab59c21d",
+    "content-hash": "c4cbc22e03414cd602e2da8299b2bf77",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1152,6 +1152,168 @@
             "time": "2016-01-05 21:34:58"
         },
         {
+            "name": "egeloen/google-map",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/ivory-google-map.git",
+                "reference": "9770a3f47888494e9f2d449144508bc805af124f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/ivory-google-map/zipball/9770a3f47888494e9f2d449144508bc805af124f",
+                "reference": "9770a3f47888494e9f2d449144508bc805af124f",
+                "shasum": ""
+            },
+            "require": {
+                "egeloen/json-builder": "~1.0.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6",
+                "widop/http-adapter": "~1.1.0",
+                "willdurand/geocoder": "~2.0"
+            },
+            "suggest": {
+                "widop/http-adapter": "Allows to use services",
+                "willdurand/geocoder": "Allows to use geocoding service"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ivory\\GoogleMap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "Google Map API v3 integration for PHP 5.3+",
+            "keywords": [
+                "google map"
+            ],
+            "time": "2014-10-30 19:30:44"
+        },
+        {
+            "name": "egeloen/google-map-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/IvoryGoogleMapBundle.git",
+                "reference": "9704d4ecfe3c5cffc5c05e504416ea826bf79262"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/IvoryGoogleMapBundle/zipball/9704d4ecfe3c5cffc5c05e504416ea826bf79262",
+                "reference": "9704d4ecfe3c5cffc5c05e504416ea826bf79262",
+                "shasum": ""
+            },
+            "require": {
+                "egeloen/google-map": "~1.4.0",
+                "php": ">=5.3.0",
+                "symfony/framework-bundle": "~2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6",
+                "symfony/form": "~2.1",
+                "symfony/yaml": "~2.0",
+                "twig/twig": "~1.12",
+                "widop/http-adapter-bundle": "~1.1.0",
+                "willdurand/geocoder": "~2.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ivory\\GoogleMapBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "Provides a google map integration for your Symfony2 Project.",
+            "keywords": [
+                "google map"
+            ],
+            "time": "2014-11-03 21:11:53"
+        },
+        {
+            "name": "egeloen/json-builder",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/ivory-json-builder.git",
+                "reference": "6209142ed808e9899473e9b6091b8a4f4d8de794"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/ivory-json-builder/zipball/6209142ed808e9899473e9b6091b8a4f4d8de794",
+                "reference": "6209142ed808e9899473e9b6091b8a4f4d8de794",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.3.0",
+                "symfony/property-access": "~2.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ivory\\JsonBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "JSON builder with escaping control for PHP 5.3+",
+            "keywords": [
+                "Escape",
+                "builder",
+                "json"
+            ],
+            "time": "2014-11-08 10:51:34"
+        },
+        {
             "name": "fabpot/php-cs-fixer",
             "version": "dev-master",
             "source": {
@@ -1161,7 +1323,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/518194b0e92dc75e791490b36b51cce39fe80bcf",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/0a63dfb961b9799fc90266b1580a8d5285f5471e",
                 "reference": "518194b0e92dc75e791490b36b51cce39fe80bcf",
                 "shasum": ""
             },
@@ -1944,7 +2106,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/b65e467e11dd89ab5de2345e01e92f707b9db48d",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/1382ed3a04efa777084e6112c02a9ccd23901325",
                 "reference": "b65e467e11dd89ab5de2345e01e92f707b9db48d",
                 "shasum": ""
             },
@@ -3703,7 +3865,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/6232b23591ab67bf3679bb21a7ba48756a294306",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/bad218d44ec4c29e4f73182b53d5e3a5747493da",
                 "reference": "6232b23591ab67bf3679bb21a7ba48756a294306",
                 "shasum": ""
             },
@@ -4890,7 +5052,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/791ca92e112f64af3ce5833e05bb10ab2578a626",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/061cc9fa96340c80725d2c287e6116ae1a8763d0",
                 "reference": "791ca92e112f64af3ce5833e05bb10ab2578a626",
                 "shasum": ""
             },
@@ -5622,7 +5784,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/374e1d4c2b71575d2717aa8aa9def0051ae83a05",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/60fbb061760f96e23154233bec9bfb2d6ff13d76",
                 "reference": "374e1d4c2b71575d2717aa8aa9def0051ae83a05",
                 "shasum": ""
             },
@@ -6251,7 +6413,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/0f9a204a82b477530b5d2c6e02de48d4979f1f35",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/8d669c50e4122c592a634580d9ea8b30c4edd0e1",
                 "reference": "0f9a204a82b477530b5d2c6e02de48d4979f1f35",
                 "shasum": ""
             },

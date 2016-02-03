@@ -29,7 +29,7 @@ class Lesson
      * @param $workshop
      * @param $event
      */
-    public function __construct($id = null, $title = null, $description = null, $address = null, $city = null, $latitude = null, $longitude = null, $startDate = null, $endDate = null, $workshop = null, $event = null)
+    public function __construct($id = null, $title = null, $description = null, $address = null, $city = null, $latitude = null, $longitude = null, $startDate = null, $endDate = null, $workshop = null, Event $event = null)
     {
         $this->id = $id;
         $this->title = $title;

@@ -83,3 +83,19 @@ knp_doctrine_behaviors:
 dende_calendar:
   model_manager_name:   default
   backend_type:         ORM
+
+jms_serializer:
+  handlers:
+    datetime:
+      default_format: "Y-m-d H:i:s"
+      default_timezone: "Europe/Warsaw"
+  metadata:
+    cache: true
+    auto_detection: false
+    directories:
+      app:
+        namespace_prefix: AppBundle\Entity
+        path:             @AppBundle/Resources/config/serializer
+      calendar:
+        namespace_prefix: Dende\Calendar\Domain
+        path:             @AppBundle/Resources/config/serializer
