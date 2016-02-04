@@ -35,7 +35,7 @@ class RegisterWorkshopsFormType extends AbstractType
             ->add("url")
             ->add("phone")
             ->add("email")
-            ->add("city")
+            ->add("city", "text")
             ->add("submit", "submit", [
                 "label" => "Zarejestruj"
             ])
@@ -46,6 +46,7 @@ class RegisterWorkshopsFormType extends AbstractType
     {
         $resolver->setDefaults([
             "data_class" => CreateWorkshop::class,
+            "cities" => [],
         ]);
     }
 

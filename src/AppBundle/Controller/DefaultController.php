@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Command\CreateWorkshop;
+use AppBundle\Command\UpdateWorkshop;
 use AppBundle\Entity\Workshop;
 use Carbon\Carbon;
 use DateTime;
@@ -110,6 +111,40 @@ class DefaultController extends Controller
             "form" => $form->createView(),
             "results" => $results
         ];
+    }
+
+    /**
+     * @Route("/{slug}/edit.html", name="evento_edit")
+     * @ParamConverter("workshop", class="AppBundle:Workshop")
+     * @Template()
+     * @param Request $request
+     * @param Workshop $workshop
+     * @return array
+     */
+    public function editAction(Request $request, Workshop $workshop){
+        $response = new Response(null, 200);
+
+        $form = $this->createForm("register_workshops_form_type", new UpdateWorkshop($workshop), [
+            "action" => $this->generateUrl("evento_edit", ["slug" => $workshop->getSlug()]),
+            "method" => "POST"
+        ]);
+
+        if($request->isMethod("POST"))
+        {
+            $form->handleRequest($request);
+            if($form->isValid())
+            {
+                $this->get("tactician.commandbus")->handle($form->getData());
+                $this->addFlash("success", "Edycja się udała ;)");
+                $this->redirectToRoute("evento_show", ["slug" => $workshop->getSlug()]);
+            } else {
+                $response->setStatusCode(400);
+            }
+        }
+
+        return $this->render("AppBundle:Default:edit.html.twig", [
+            "form" => $form->createView(),
+        ], $response);
     }
 
     /**
