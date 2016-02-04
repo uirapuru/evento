@@ -78,7 +78,38 @@ class DefaultController extends Controller
      * @return array
      */
     public function searchAction(Request $request){
-        return [];
+        $repository = $this->get("app.repository.workshop");
+        $cities = $repository->getUniqueCities();
+
+        $form = $this->createForm("search_workshop",
+            [
+                "startDate" => Carbon::parse("now"),
+                "endDate"   => Carbon::parse("+1 month")
+            ],
+            [
+                "action" => $this->generateUrl("evento_search"),
+                "method" => "GET",
+                "cities" => array_combine($cities, $cities)
+            ]
+        );
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()) {
+            $results = [];
+
+            if($form->isValid())
+            {
+                $results = $repository->search($form->getData());
+            }
+        } else {
+            $results = $repository->findAll([], ["startDate" => "ASC"]);
+        }
+
+        return [
+            "form" => $form->createView(),
+            "results" => $results
+        ];
     }
 
     /**

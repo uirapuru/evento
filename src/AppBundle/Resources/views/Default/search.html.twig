@@ -2,38 +2,46 @@
 
 {% block body %}
     <div class="jumbotron">
-        <form>
-            <input>
-            <input>
-            <input>
-            <input>
-        </form>
-        <div>
-            <span class="badge">Wrocław</span>
-            <span class="badge">Gdańsk</span>
-            <span class="badge">Poznań</span>
-            <span class="badge">Warszawa</span>
-            <span class="badge">Kraków</span>
-            <span class="badge">Katowice</span>
-        </div>
-        <div>
-            <span class="badge badge-success">ten tydzień</span>
-            <span class="badge badge-success">przyszły tydzień</span>
-            <span class="badge badge-success">ten miesiąc</span>
-            <span class="badge badge-success">przyszły miesiąc</span>
-            <span class="badge badge-success">przyszłe 3 miesiące</span>
-            <span class="badge badge-success">w ciągu pół roku</span>
-        </div>
+
+        {{ form_start(form) }}
+        {{ form_row(form.search) }}
+        <strong>LUB</strong>
+        {{ form_row(form.city) }}
+        <strong>LUB</strong>
+        {{ form_row(form.startDate) }}
+        {{ form_row(form.endDate) }}
+        {{ form_end(form) }}
+
+        {#<div>#}
+            {#<span class="badge">Wrocław</span>#}
+            {#<span class="badge">Gdańsk</span>#}
+            {#<span class="badge">Poznań</span>#}
+            {#<span class="badge">Warszawa</span>#}
+            {#<span class="badge">Kraków</span>#}
+            {#<span class="badge">Katowice</span>#}
+        {#</div>#}
+        {#<div>#}
+            {#<span class="badge badge-success">ten tydzień</span>#}
+            {#<span class="badge badge-success">przyszły tydzień</span>#}
+            {#<span class="badge badge-success">ten miesiąc</span>#}
+            {#<span class="badge badge-success">przyszły miesiąc</span>#}
+            {#<span class="badge badge-success">przyszłe 3 miesiące</span>#}
+            {#<span class="badge badge-success">w ciągu pół roku</span>#}
+        {#</div>#}
     </div>
-                                    <h3>Wyniki:</h3>
+
+    <h3>Wyniki:</h3>
     <div class="row marketing">
+        {% for workshop in results %}
         <div class="col-lg-12">
             <h4>
-                <a href="#">
-                    aaa
+                <a href="{{ path("evento_show", {slug: workshop.slug}) }}">
+                    {{ workshop.city }},
+                    {{ workshop.startDate|date("d.m.Y") }}
                 </a>
             </h4>
-            <p>aaa</p>
+            <p>{{ workshop.title }}</p>
         </div>
+        {% endfor %}
     </div>
 {% endblock body %}

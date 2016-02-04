@@ -9,6 +9,11 @@ services:
     tags:
         - { name: form.type, alias: register_workshops_form_type }
 
+  app.form.search:
+    class: AppBundle\Form\SearchType
+    tags:
+        - { name: form.type, alias: search_workshop }
+
   app.repository.workshop:
     class: AppBundle\Entity\WorkshopRepository
     factory: [@doctrine.orm.entity_manager, getRepository]

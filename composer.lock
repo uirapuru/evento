@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "53f374402271fe62d243307cab59c21d",
-    "content-hash": "c4cbc22e03414cd602e2da8299b2bf77",
+    "hash": "d0c9bce9cfd7f0f92fbbe2271213bbd6",
+    "content-hash": "b847ce88508f61a80544f8f4919ae112",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1323,7 +1323,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/0a63dfb961b9799fc90266b1580a8d5285f5471e",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/c997bd3bb1789e79e0fd27ebf6bda152d9befeab",
                 "reference": "518194b0e92dc75e791490b36b51cce39fe80bcf",
                 "shasum": ""
             },
@@ -1973,6 +1973,135 @@
                 "tree"
             ],
             "time": "2015-12-18 13:42:46"
+        },
+        {
+            "name": "knplabs/knp-components",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/knp-components.git",
+                "reference": "07d445c8fab6471fe39fcd5216bce9749ddfbead"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/07d445c8fab6471fe39fcd5216bce9749ddfbead",
+                "reference": "07d445c8fab6471fe39fcd5216bce9749ddfbead",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "~1.0@beta",
+                "doctrine/orm": "~2.4",
+                "phpunit/phpunit": "~4.2",
+                "ruflin/elastica": "~1.0",
+                "symfony/event-dispatcher": "~2.5"
+            },
+            "suggest": {
+                "doctrine/common": "to allow usage pagination with Doctrine ArrayCollection",
+                "doctrine/mongodb-odm": "to allow usage pagination with Doctrine ODM MongoDB",
+                "doctrine/orm": "to allow usage pagination with Doctrine ORM",
+                "propel/propel1": "to allow usage pagination with Propel ORM",
+                "ruflin/Elastica": "to allow usage pagination with ElasticSearch Client",
+                "solarium/solarium": "to allow usage pagination with Solarium Client"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Component": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/knp-components/contributors"
+                }
+            ],
+            "description": "Knplabs component library",
+            "homepage": "http://github.com/KnpLabs/knp-components",
+            "keywords": [
+                "components",
+                "knp",
+                "knplabs",
+                "pager",
+                "paginator"
+            ],
+            "time": "2015-10-22 08:02:08"
+        },
+        {
+            "name": "knplabs/knp-paginator-bundle",
+            "version": "2.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
+                "reference": "5147740faff4d32e6f42acf64475314c35320fa4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/5147740faff4d32e6f42acf64475314c35320fa4",
+                "reference": "5147740faff4d32e6f42acf64475314c35320fa4",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-components": "~1.2",
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.3|~3.0",
+                "twig/twig": "~1.12|~2"
+            },
+            "require-dev": {
+                "symfony/expression-language": "~2.4|~3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Knp\\Bundle\\PaginatorBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony2 Community",
+                    "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle/contributors"
+                }
+            ],
+            "description": "Paginator bundle for Symfony2 to automate pagination and simplify sorting and other features",
+            "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "knp",
+                "knplabs",
+                "pager",
+                "pagination",
+                "paginator"
+            ],
+            "time": "2015-11-23 17:51:40"
         },
         {
             "name": "league/tactician",
@@ -5784,7 +5913,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/60fbb061760f96e23154233bec9bfb2d6ff13d76",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/56704bef45b965bb27de60be376499a4f2bbca80",
                 "reference": "374e1d4c2b71575d2717aa8aa9def0051ae83a05",
                 "shasum": ""
             },
