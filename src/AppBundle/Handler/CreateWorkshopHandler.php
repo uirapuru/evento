@@ -3,10 +3,12 @@ namespace AppBundle\Handler;
 
 use AppBundle\Command\CreateLesson;
 use AppBundle\Command\CreateWorkshop;
+use AppBundle\Entity\Lesson;
 use AppBundle\Entity\LessonRepository;
 use AppBundle\Entity\WorkshopRepository;
 use AppBundle\Factory\LessonFactory;
 use AppBundle\Factory\WorkshopFactory;
+use Exception;
 
 /**
  * Class CreateWorkshopHandler
@@ -39,14 +41,17 @@ class CreateWorkshopHandler
 
     /**
      * @param CreateWorkshop $command
+     * @throws Exception
      */
     public function handle(CreateWorkshop $command){
+        if(!is_array($command->lessons) || count($command->lessons) === 0) {
+            throw new Exception("Lessons collection can't be empty!");
+        }
+
         $workshop = $this->workshopFactory->createFromCommand($command);
 
-        /** @var CreateLesson $lessonCommand */
-        foreach($command->lessons as $lessonCommand) {
-            $lessonCommand->workshop = $workshop;
-            $lesson = $this->lessonFactory->createFromCommand($lessonCommand);
+        /** @var Lesson $lesson */
+        foreach($command->lessons as $lesson) {
             $workshop->addLesson($lesson);
         }
 

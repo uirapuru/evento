@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Command;
 
-class CreateWorkshop
+class CreateWorkshop implements WorkshopCommandInterface
 {
     public $title;
     public $description;

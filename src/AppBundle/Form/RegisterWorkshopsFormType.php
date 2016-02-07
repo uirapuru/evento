@@ -2,8 +2,11 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Command\CreateLesson;
 use AppBundle\Command\CreateWorkshop;
+use AppBundle\Command\WorkshopCommandInterface;
 use AppBundle\Entity\Lesson;
+use AppBundle\Form\Transformer\LessonToCommand;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,11 +30,13 @@ class RegisterWorkshopsFormType extends AbstractType
                 "date_format" => "d.M.y H:i",
                 "widget" => "single_text"
             ])
-            ->add("lessons", "collection", [
-                'entry_type'   => LessonFormType::class,
-                'allow_add'    => true,
-                'by_reference' => false
-            ])
+            ->add(
+                $builder->create("lessons", "collection", [
+                    'entry_type'   => LessonFormType::class,
+                    'allow_add'    => true,
+                    'by_reference' => false
+                ])->addModelTransformer($options["lessonTransformer"])
+            )
             ->add("url")
             ->add("phone")
             ->add("email")
@@ -45,8 +50,9 @@ class RegisterWorkshopsFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            "data_class" => CreateWorkshop::class,
+            "data_class" => WorkshopCommandInterface::class,
             "cities" => [],
+            "lessonTransformer" => null
         ]);
     }
 

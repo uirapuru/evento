@@ -3,24 +3,25 @@ namespace AppBundle\Factory;
 
 use AppBundle\Command\CreateWorkshop;
 use AppBundle\Entity\Workshop;
+use AppBundle\Generator\IdGeneratorInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class WorkshopFactory
 {
+    /** @var  IdGeneratorInterface */
     private $idGenerator;
+
+    /** @var  GeneratorInterface */
+    private $workshopSlugGenerator;
 
     /**
      * WorkshopFactory constructor.
      * @param $idGenerator
      */
-    public function __construct($idGenerator)
+    public function __construct(IdGeneratorInterface $idGenerator, $workshopSlugGenerator)
     {
         $this->idGenerator = $idGenerator;
-    }
-
-    private static function getSlug(array $params)
-    {
-        return implode("-", array_map("strtolower", $params));
+        $this->workshopSlugGenerator = $workshopSlugGenerator;
     }
 
     public function createFromCommand(CreateWorkshop $command){
@@ -36,11 +37,7 @@ class WorkshopFactory
             $command->email,
             $command->phone,
             $command->city,
-            self::getSlug([
-                $command->startDate->format("Y-m-d"),
-                $command->city,
-                $command->title,
-            ])
+            $this->workshopSlugGenerator->generate($command)
         );
     }
 }

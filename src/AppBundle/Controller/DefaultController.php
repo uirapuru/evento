@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Command\CreateWorkshop;
+use AppBundle\Command\UpdateLesson;
 use AppBundle\Command\UpdateWorkshop;
 use AppBundle\Entity\Workshop;
 use Carbon\Carbon;
@@ -40,7 +41,8 @@ class DefaultController extends Controller
 
         $form = $this->createForm("register_workshops_form_type", new CreateWorkshop(), [
             "action" => $this->generateUrl("evento_register"),
-            "method" => "POST"
+            "method" => "POST",
+            "lessonTransformer" => $this->get("app.form.transform.lesson_command")
         ]);
 
         if($request->isMethod("POST"))
@@ -114,7 +116,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{slug}/edit.html", name="evento_edit")
+     * @Route("/edit/{slug}", name="evento_edit")
      * @ParamConverter("workshop", class="AppBundle:Workshop")
      * @Template()
      * @param Request $request
@@ -126,7 +128,8 @@ class DefaultController extends Controller
 
         $form = $this->createForm("register_workshops_form_type", new UpdateWorkshop($workshop), [
             "action" => $this->generateUrl("evento_edit", ["slug" => $workshop->getSlug()]),
-            "method" => "POST"
+            "method" => "POST",
+            "lessonTransformer" => $this->get("app.form.transform.lesson_command")->setCommandClass(UpdateLesson::class)
         ]);
 
         if($request->isMethod("POST"))
@@ -148,7 +151,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{slug}.html", name="evento_show")
+     * @Route("/show/{slug}", name="evento_show")
      * @ParamConverter("workshop", class="AppBundle:Workshop")
      * @Template()
      * @param Request $request

@@ -1,5 +1,6 @@
 <?php
 namespace AppBundle\Entity;
+use AppBundle\Command\UpdateWorkshop;
 use Dende\Calendar\Domain\Calendar;
 use Doctrine\Common\Collections\Collection;
 
@@ -136,10 +137,17 @@ class Workshop
         return $this->phone;
     }
 
+    /**
+     * @param Lesson $lesson
+     */
     public function addLesson(Lesson $lesson) {
+        $lesson->setWorkshop($this);
         $this->lessons->add($lesson);
     }
 
+    /**
+     * @param Lesson $lesson
+     */
     public function removeLesson(Lesson $lesson) {
         $this->lessons->remove($lesson);
     }
@@ -166,5 +174,24 @@ class Workshop
     public function getCalendar()
     {
         return $this->calendar;
+    }
+
+    /**
+     * @param UpdateWorkshop $command
+     */
+    public function updateWithCommand(UpdateWorkshop $command)
+    {
+        $this->city = $command->city;
+        $this->description = $command->description;
+        $this->email = $command->email;
+        $this->endDate = $command->endDate;
+        $this->startDate = $command->startDate;
+        $this->url = $command->url;
+        $this->title = $command->title;
+        $this->lessons = $command->lessons;
+    }
+
+    public function updateSlug($slug) {
+        $this->slug = $slug;
     }
 }

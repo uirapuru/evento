@@ -1,9 +1,18 @@
 ---
 parameters:
-  workshop.class: AppBundle\Entity\Workshop
-  lesson.class: AppBundle\Entity\Lesson
+  workshop.class:               AppBundle\Entity\Workshop
+  lesson.class:                 AppBundle\Entity\Lesson
+  lesson.class.command.create:  AppBundle\Command\CreateLesson
+  lesson.class.command.update:  AppBundle\Command\UpdateLesson
 
 services:
+  app.form.transform.lesson_command:
+    class: AppBundle\Form\Transformer\LessonToCommand
+    arguments:
+      - @app.factory.lesson
+    calls:
+      - [setCommandClass, [%lesson.class.command.create%]]
+
   app.form.register_workshops_form_type:
     class: AppBundle\Form\RegisterWorkshopsFormType
     tags:
@@ -35,15 +44,30 @@ services:
     tags:
       - {name: tactician.handler, command: AppBundle\Command\CreateWorkshop }
 
+  app.handler.update_workshop:
+    class: AppBundle\Handler\UpdateWorkshopHandler
+    arguments:
+      - @app.repository.workshop
+      - @app.generator.workshop_slug
+    tags:
+      - {name: tactician.handler, command: AppBundle\Command\UpdateWorkshop }
+
   app.generator.null:
     class: AppBundle\Generator\NullGenerator
+
+  app.generator.workshop_slug:
+    class: AppBundle\Generator\WorkshopSlugGenerator
+    arguments:
+      - @app.repository.workshop
 
   app.factory.workshop:
     class: AppBundle\Factory\WorkshopFactory
     arguments:
       - @app.generator.null
+      - @app.generator.workshop_slug
 
   app.factory.lesson:
     class: AppBundle\Factory\LessonFactory
     arguments:
       - @app.generator.null
+      - @app.repository.lesson

@@ -93,4 +93,11 @@ class WorkshopRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function update(Workshop $workshop)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($workshop);
+        $em->flush();
+    }
 }

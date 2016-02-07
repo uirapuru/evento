@@ -30,7 +30,8 @@
         "friendsofsymfony/jsrouting-bundle": "^1.5",
         "jms/serializer-bundle": "^1.1",
         "egeloen/google-map-bundle": "^2.2",
-        "knplabs/knp-paginator-bundle": "^2.5"
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "phpunit/php-code-coverage": "^3.1"
     },
     "require-dev": {
         "behat/behat": "^3.0",

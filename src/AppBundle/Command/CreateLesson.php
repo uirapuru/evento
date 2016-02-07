@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Command;
 
-class CreateLesson
+class CreateLesson implements LessonCommandInterface
 {
     public $title;
     public $description;

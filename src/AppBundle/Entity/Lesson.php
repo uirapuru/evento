@@ -131,4 +131,9 @@ class Lesson
     {
         return $this->event;
     }
+
+    public function setWorkshop(Workshop $workshop)
+    {
+        $this->workshop = $workshop;
+    }
 }

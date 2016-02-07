@@ -7,9 +7,19 @@ use AppBundle\Entity\Workshop;
  * Class UpdateWorkshop
  * @package AppBundle\Command
  */
-class UpdateWorkshop extends CreateWorkshop
+class UpdateWorkshop implements WorkshopCommandInterface
 {
     public $id;
+    public $title;
+    public $description;
+    public $startDate;
+    public $endDate;
+    public $lessons;
+    public $url;
+    public $email;
+    public $phone;
+    public $city;
+    public $slug;
 
     /**
      * UpdateWorkshop constructor.

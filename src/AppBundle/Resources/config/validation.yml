@@ -1,0 +1,19 @@
+AppBundle\Command\UpdateWorkshop:
+  properties:
+    lessons:
+      - Valid: ~
+      - Count:
+          min: 1
+          minMessage: Musi istnieć przynajmniej 1 sekcja!
+          max: 10
+          maxMessage: Nie może istnieć więcej niż 10 sekcji!
+
+AppBundle\Command\CreateWorkshop:
+  properties:
+    lessons:
+      - Valid: ~
+      - Count:
+          min: 1
+          minMessage: Musi istnieć przynajmniej 1 sekcja!
+          max: 10
+          maxMessage: Nie może istnieć więcej niż 10 sekcji!

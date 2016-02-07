@@ -9,7 +9,7 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
     /**
      * test
      */
-    public function it_renders_product_creating_form_correctly()
+    public function it_renders_workshop_creating_form_correctly()
     {
         $crawler = $this->client->request('GET', sprintf('/rejestracja.html'));
         $this->assertEquals(200, $this->getStatusCode());
@@ -22,7 +22,7 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
      * @test
      * @return void
      */
-    public function it_creates_new_product_correctly()
+    public function it_creates_new_workshop_correctly()
     {
         $crawler = $this->client->request('GET', sprintf('/rejestracja.html'));
         $this->assertEquals(200, $this->getStatusCode());
@@ -76,4 +76,50 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
         $this->assertInstanceOf(Workshop::class, $workshop);
         $this->assertCount(2, $workshop->getLessons());
     }
+
+    /**
+     * test
+     */
+    public function it_renders_workshop_updating_form_correctly()
+    {
+        /** @var Workshop $workshop */
+        $workshop = $this->getContainer()->get("app.repository.workshop")->findOneBy([]);
+
+        $crawler = $this->client->request('GET', sprintf('/rejestracja.html'));
+        $this->assertEquals(200, $this->getStatusCode());
+        $formElement = $crawler->filter("form");
+        $this->assertCount(8, $formElement->filter("input"));
+        $this->assertCount(1, $formElement->filter("textarea"));
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function it_updates_new_product_correctly()
+    {
+        /** @var Workshop $workshop */
+        $workshop = $this->getContainer()->get("app.repository.workshop")->findOneBy([]);
+
+        $crawler = $this->client->request('GET', sprintf('/edit/%s', $workshop->getSlug()));
+        $this->assertEquals(200, $this->getStatusCode());
+
+        $formName ="register_workshops_form_type";
+
+        $submitButton = $crawler->selectButton("register_workshops_form_type_submit");
+        $form = $submitButton->form();
+
+        $title = $this->faker->sentence();
+
+        $form->setValues([
+            "register_workshops_form_type[title]" => md5($title)
+        ]);
+
+        $this->client->submit($form);
+        $this->assertEquals(200, $this->getStatusCode());
+
+        $this->assertEquals(md5($title), $workshop->getTitle());
+        $this->assertCount(2, $workshop->getLessons());
+    }
+
 }
