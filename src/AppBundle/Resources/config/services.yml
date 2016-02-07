@@ -48,9 +48,17 @@ services:
     class: AppBundle\Handler\UpdateWorkshopHandler
     arguments:
       - @app.repository.workshop
+      - @app.repository.lesson
       - @app.generator.workshop_slug
     tags:
       - {name: tactician.handler, command: AppBundle\Command\UpdateWorkshop }
+
+#  app.handler.update_lesson_collection:
+#    class: AppBundle\Handler\UpdateLessonCollectionHandler
+#    arguments:
+#      - @app.repository.lesson
+#    tags:
+#      - {name: tactician.handler, command: AppBundle\Command\UpdateWorkshop }
 
   app.generator.null:
     class: AppBundle\Generator\NullGenerator

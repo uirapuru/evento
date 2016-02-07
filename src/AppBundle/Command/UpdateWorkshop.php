@@ -33,7 +33,7 @@ class UpdateWorkshop implements WorkshopCommandInterface
         $this->startDate = $workshop->getStartDate();
         $this->endDate = $workshop->getEndDate();
         $this->city = $workshop->getCity();
-        $this->lessons = $workshop->getLessons(); /** @todo convert to UpdateLesson[] */
+        $this->lessons = $workshop->getLessons();
         $this->phone = $workshop->getPhone();
         $this->url = $workshop->getUrl();
         $this->email = $workshop->getEmail();

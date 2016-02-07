@@ -2,6 +2,7 @@
 namespace AppBundle\Handler;
 
 use AppBundle\Command\UpdateWorkshop;
+use AppBundle\Entity\LessonRepository;
 use AppBundle\Entity\Workshop;
 use AppBundle\Entity\WorkshopRepository;
 use AppBundle\Generator\WorkshopSlugGenerator;
@@ -16,16 +17,22 @@ class UpdateWorkshopHandler
     /** @var  WorkshopRepository */
     private $workshopRepository;
 
+    /** @var  LessonRepository */
+    private $lessonRepository;
+
     /** @var  WorkshopSlugGenerator */
     private $slugGenerator;
 
     /**
      * UpdateWorkshopHandler constructor.
-     * @param $workshopRepository
+     * @param WorkshopRepository $workshopRepository
+     * @param LessonRepository $lessonRepository
+     * @param WorkshopSlugGenerator $slugGenerator
      */
-    public function __construct($workshopRepository, $slugGenerator)
+    public function __construct(WorkshopRepository $workshopRepository, LessonRepository $lessonRepository, WorkshopSlugGenerator $slugGenerator)
     {
         $this->workshopRepository = $workshopRepository;
+        $this->lessonRepository = $lessonRepository;
         $this->slugGenerator = $slugGenerator;
     }
 
@@ -34,15 +41,20 @@ class UpdateWorkshopHandler
      * @throws Exception
      */
     public function handle(UpdateWorkshop $command){
-        if(!is_array($command->lessons) || count($command->lessons) === 0) {
-            throw new Exception("Lessons collection can't be empty!");
-        }
-
         /** @var Workshop $workshop */
         $workshop = $this->workshopRepository->findOneById($command->id);
         $workshop->updateWithCommand($command);
-
         $workshop->updateSlug($this->slugGenerator->generate($workshop));
+
+        $command->lessons;
+
+        foreach($workshop->getLessons() as $existingLesson)
+        {
+            if(!in_array($existingLesson, $command->lessons)) {
+                $this->lessonRepository->remove($existingLesson);
+                $workshop->getLessons()->removeElement($existingLesson);
+            }
+        }
 
         $this->workshopRepository->update($workshop);
     }

@@ -55,6 +55,11 @@ class CreateWorkshopHandler
             $workshop->addLesson($lesson);
         }
 
+        // create calendar
+        // create events
+        // create occurrence
+        // connect to lesson
+
         $this->workshopRepository->insert($workshop);
     }
 }

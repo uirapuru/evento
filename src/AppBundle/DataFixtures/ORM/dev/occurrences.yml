@@ -1,0 +1,17 @@
+---
+Dende\Calendar\Domain\Calendar\Event\Duration (local):
+  duration_1:
+    __construct:  [30]
+
+\DateTime (local):
+  rejestracja_start:
+    __construct:
+      - "yesterday 15:00"
+
+Dende\Calendar\Domain\Calendar\Event\Occurrence: #$id, DateTime $startDate, Duration $duration, Event $event
+  occurrence_1:
+    __construct:
+      - null
+      - "@rejestracja_start"
+      - "@duration_1"
+      - "@event_1"

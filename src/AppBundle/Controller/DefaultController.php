@@ -75,6 +75,30 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/events.json", name="evento_getevents")
+     * @param Request $request
+     * @return array
+     */
+    public function getEventsAction(Request $request){
+        $start = Carbon::parse($request->get('start'));
+        $end = Carbon::parse($request->get('end'));
+
+        $events = $this->get('dende_calendar.occurrences_provider')->getAll($start, $end, !$request->get("noroute", false));
+
+        $workshops = array_map(function(Workshop $workshop) {
+            return [
+                "id" => $workshop->getSlug(),
+                "start" => $workshop->getStartDate()->format("Y-m-d H:i:s"),
+                "end" => $workshop->getEndDate()->format("Y-m-d H:i:s"),
+                "rendering" => "background",
+                "editable" => false
+            ];
+        }, $this->get('app.repository.workshop')->findByPeriod($start, $end));
+
+        return new JsonResponse(array_merge($events, $workshops));
+    }
+
+    /**
      * @Route("/search.html", name="evento_search")
      * @Template()
      * @param Request $request

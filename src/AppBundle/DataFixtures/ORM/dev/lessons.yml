@@ -1,0 +1,13 @@
+---
+AppBundle\Entity\Lesson:
+  lesson_1:
+    id:                     ~
+    title:                  "Rejestracja"
+    description: >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci elit, ultrices id faucibus et, interdum sit amet ligula. Etiam consequat, neque non blandit egestas, lectus mauris dignissim dolor, ac ornare elit dui in sem. Nam ultrices pulvinar purus, sit amet venenatis ligula aliquam et. In finibus erat mauris. Aenean vel nisl egestas, faucibus massa id, egestas orci. Cras gravida dapibus tempor. Nullam ultrices sagittis dolor eget mollis. Nam tellus metus, maximus at sapien ut, faucibus ultrices dolor. Nulla neque mi, pretium ac rutrum vitae, dictum vel tellus. Duis sollicitudin turpis eu augue blandit, vitae laoreet dolor aliquet. Pellentesque pretium in nibh et consectetur. Vivamus lacinia, leo at fringilla placerat, sapien mi laoreet risus, in consectetur felis odio ut ligula. Curabitur luctus metus imperdiet sem placerat suscipit. Proin varius diam vel lacus luctus viverra. Suspendisse potenti.
+    workshop:               "@workshop_1"
+    address:                <address()>
+    city:                   <city()>
+    latitude:               0
+    longitude:              0
+    event:                  @event_1

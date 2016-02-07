@@ -34,6 +34,7 @@ class RegisterWorkshopsFormType extends AbstractType
                 $builder->create("lessons", "collection", [
                     'entry_type'   => LessonFormType::class,
                     'allow_add'    => true,
+                    'allow_delete' => true,
                     'by_reference' => false
                 ])->addModelTransformer($options["lessonTransformer"])
             )

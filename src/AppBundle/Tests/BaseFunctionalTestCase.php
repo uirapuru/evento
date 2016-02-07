@@ -58,6 +58,14 @@ abstract class BaseFunctionalTestCase extends WebTestCase
 
         $this->client = static::makeClient();
         $this->client->followRedirects(true);
+
+        $this->fixtures = $this->loadFixtureFiles([
+            '@AppBundle/DataFixtures/ORM/test/calendars.yml',
+            '@AppBundle/DataFixtures/ORM/test/events.yml',
+            '@AppBundle/DataFixtures/ORM/test/occurrences.yml',
+            '@AppBundle/DataFixtures/ORM/test/workshops.yml',
+            '@AppBundle/DataFixtures/ORM/test/lessons.yml',
+        ]);
     }
 
     protected function getContent()

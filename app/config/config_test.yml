@@ -15,3 +15,21 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+    dbal:
+        driver:   pdo_sqlite
+        dbname:   %database_name%
+        charset:  UTF8
+        path:     %kernel.cache_dir%/test.db
+
+liip_functional_test:
+  cache_sqlite_db: true
+  authentication:
+    username: test
+    password: test
+
+security:
+  firewalls:
+    main:
+      http_basic: ~

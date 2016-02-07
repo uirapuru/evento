@@ -1,0 +1,28 @@
+---
+\DateTime (local):
+  workshop_start_date:
+    __construct:
+      - "yesterday 15:00:00"
+  workshop_end_date:
+    __construct:
+      - "+2 days 22:00:00"
+
+AppBundle\Entity\Workshop:
+  workshop_1:
+    title:              "Warsztaty Capoeira Regional"
+    description: >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec orci elit, ultrices id faucibus et, interdum sit amet ligula. Etiam consequat, neque non blandit egestas, lectus mauris dignissim dolor, ac ornare elit dui in sem. Nam ultrices pulvinar purus, sit amet venenatis ligula aliquam et. In finibus erat mauris. Aenean vel nisl egestas, faucibus massa id, egestas orci. Cras gravida dapibus tempor. Nullam ultrices sagittis dolor eget mollis. Nam tellus metus, maximus at sapien ut, faucibus ultrices dolor. Nulla neque mi, pretium ac rutrum vitae, dictum vel tellus. Duis sollicitudin turpis eu augue blandit, vitae laoreet dolor aliquet. Pellentesque pretium in nibh et consectetur. Vivamus lacinia, leo at fringilla placerat, sapien mi laoreet risus, in consectetur felis odio ut ligula. Curabitur luctus metus imperdiet sem placerat suscipit. Proin varius diam vel lacus luctus viverra. Suspendisse potenti.
+      Proin pretium purus justo, sit amet viverra dolor ultrices in. Curabitur vel lacinia urna, sed sodales sem. Donec faucibus felis pellentesque, fringilla nulla id, porttitor ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed purus arcu, auctor quis nisi in, efficitur laoreet mi. Nulla orci sapien, vulputate ut elit vitae, cursus tempor massa. Vivamus augue metus, sodales at mauris in, dignissim viverra lacus. Morbi sodales eget metus vitae interdum. Vestibulum lobortis vehicula purus nec pharetra. Duis eget leo non purus consectetur convallis. Curabitur gravida vehicula lacinia. Vestibulum consectetur condimentum luctus. Proin imperdiet neque in nunc vehicula, eget dictum enim porta.
+      Vestibulum viverra libero mollis, accumsan nisl quis, congue felis. Donec nec mi lacus. Pellentesque aliquet porta sagittis. Mauris vel arcu nisl. Integer ipsum justo, vestibulum ac est eu, accumsan consequat nunc. Quisque ut quam mi. Etiam finibus luctus nulla, eu iaculis tortor vestibulum sed. Aenean sapien magna, mattis id ex in, commodo rutrum dolor. Suspendisse sit amet gravida ante, non porta metus. Praesent vitae laoreet neque. Integer quis lacinia erat, eget elementum odio. Phasellus in pulvinar sapien. Vivamus tristique, augue eget iaculis fringilla, enim magna molestie mauris, dignissim scelerisque diam leo id elit.
+      Suspendisse sagittis eu elit non imperdiet. Nam euismod diam ut augue tincidunt viverra. Pellentesque vestibulum nisi a feugiat suscipit. Duis in massa cursus, malesuada urna non, maximus ante. Curabitur sed facilisis nunc, eu placerat neque. Fusce mauris lorem, egestas id placerat sit amet, gravida eu felis. Donec mattis orci nec porta sodales. Nunc at odio augue. Nullam enim odio, lobortis eu sollicitudin et, finibus in quam. Donec et ante purus. Maecenas ac nisl ante. Cras ultricies lacus sapien, non bibendum ipsum finibus ut. Curabitur mattis odio vel semper vehicula. Fusce consectetur semper nisl, in euismod libero placerat sit amet. Fusce auctor lacus id purus ultrices, eget sagittis nunc finibus. Proin et nisi quis diam interdum ultrices.
+      Sed est sem, aliquet at nulla euismod, pharetra porttitor arcu. Cras enim nisi, malesuada non gravida quis, blandit quis odio. Nullam interdum augue hendrerit lobortis auctor. Integer in lectus non urna sollicitudin vulputate. Aenean porta dapibus diam, at efficitur sem facilisis sed. In fringilla dui vitae pharetra dictum. Donec vel magna varius, bibendum mauris nec, elementum lectus. Mauris iaculis turpis ut nibh commodo, at facilisis nisl consectetur. Duis non purus pretium, suscipit tortor nec, egestas est. Integer sit amet augue id enim rhoncus ultrices ac ac neque. Fusce aliquet turpis non quam dictum sollicitudin. Nulla et dignissim turpis. Curabitur tincidunt ultricies purus, ut consequat ipsum pulvinar in. Phasellus id elit et augue ornare placerat. Pellentesque dignissim in ipsum ut finibus. Donec augue sem, blandit ac dolor ac, ultrices fringilla velit.
+
+    startDate:          "@workshop_start_date"
+    endDate:            "@workshop_end_date"
+    user:               ~
+    url:                www.camangula.pl
+    phone:              604 411 089
+    email:              uirapuru@tlen.pl
+    city:               Gdynia
+    slug:               <slug()>
+    calendar (unique):  "@calendar_1"

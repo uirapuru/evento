@@ -96,7 +96,7 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
      * @test
      * @return void
      */
-    public function it_updates_new_product_correctly()
+    public function it_updates_new_product_details_correctly()
     {
         /** @var Workshop $workshop */
         $workshop = $this->getContainer()->get("app.repository.workshop")->findOneBy([]);
@@ -106,20 +106,24 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
 
         $formName ="register_workshops_form_type";
 
-        $submitButton = $crawler->selectButton("register_workshops_form_type_submit");
+        $submitButton = $crawler->selectButton($formName."_submit");
         $form = $submitButton->form();
 
         $title = $this->faker->sentence();
 
-        $form->setValues([
-            "register_workshops_form_type[title]" => md5($title)
-        ]);
+        $values = $form->getPhpValues();
 
-        $this->client->submit($form);
+        $values[$formName]["_token"] = $form[$formName."[_token]"]->getValue();
+        $values[$formName]["title"] = md5($title);
+        $newLessons = array_slice($values[$formName]["lessons"], 1, 3);
+        $values[$formName]["lessons"] = $newLessons;
+
+        $crawler = $this->client->request($form->getMethod(), $form->getUri(), $values);
         $this->assertEquals(200, $this->getStatusCode());
+        $this->getContainer()->get("doctrine.orm.default_entity_manager")->refresh($workshop);
 
         $this->assertEquals(md5($title), $workshop->getTitle());
-        $this->assertCount(2, $workshop->getLessons());
+        $this->assertCount(3, $workshop->getLessons());
     }
 
 }

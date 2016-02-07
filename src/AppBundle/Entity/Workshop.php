@@ -2,6 +2,7 @@
 namespace AppBundle\Entity;
 use AppBundle\Command\UpdateWorkshop;
 use Dende\Calendar\Domain\Calendar;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
@@ -98,7 +99,7 @@ class Workshop
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getLessons()
     {
@@ -188,7 +189,6 @@ class Workshop
         $this->startDate = $command->startDate;
         $this->url = $command->url;
         $this->title = $command->title;
-        $this->lessons = $command->lessons;
     }
 
     public function updateSlug($slug) {

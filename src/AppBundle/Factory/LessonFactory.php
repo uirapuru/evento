@@ -44,8 +44,6 @@ class LessonFactory
             $command->city,
             null,
             null,
-            $command->startDate,
-            $command->endDate,
             $command->workshop,
             null
         );

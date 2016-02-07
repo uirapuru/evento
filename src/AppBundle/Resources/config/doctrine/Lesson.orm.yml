@@ -13,7 +13,7 @@ AppBundle\Entity\Lesson:
     workshop:
       targetEntity: AppBundle\Entity\Workshop
       inversedBy: lessons
-      cascade: ["all"]
+      cascade: ["persist"]
 
   OneToOne:
     event:

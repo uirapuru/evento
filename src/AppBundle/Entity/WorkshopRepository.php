@@ -75,7 +75,7 @@ class WorkshopRepository extends EntityRepository
      * @param DateTime $endDate
      * @return array|Workshop[]
      */
-    private function findByPeriod(DateTime $startDate, DateTime $endDate)
+    public function findByPeriod(DateTime $startDate, DateTime $endDate)
     {
         $qb = $this->createQueryBuilder("w");
         $expr = $qb->expr();
@@ -94,10 +94,12 @@ class WorkshopRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * @param Workshop $workshop
+     */
     public function update(Workshop $workshop)
     {
         $em = $this->getEntityManager();
-        $em->persist($workshop);
         $em->flush();
     }
 }

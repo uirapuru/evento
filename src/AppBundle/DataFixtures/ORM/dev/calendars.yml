@@ -1,0 +1,6 @@
+---
+Dende\Calendar\Domain\Calendar:
+  calendar_1:
+    __construct:
+      - null
+      - "Warsztaty Capoeira Regional"

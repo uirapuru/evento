@@ -10,8 +10,6 @@ class Lesson
     private $city;
     private $latitude;
     private $longitude;
-    private $startDate;
-    private $endDate;
     private $workshop;
     private $event;
 
@@ -24,12 +22,10 @@ class Lesson
      * @param $city
      * @param $latitude
      * @param $longitude
-     * @param $startDate
-     * @param $endDate
      * @param $workshop
      * @param $event
      */
-    public function __construct($id = null, $title = null, $description = null, $address = null, $city = null, $latitude = null, $longitude = null, $startDate = null, $endDate = null, $workshop = null, Event $event = null)
+    public function __construct($id = null, $title = null, $description = null, $address = null, $city = null, $latitude = null, $longitude = null, $workshop = null, Event $event = null)
     {
         $this->id = $id;
         $this->title = $title;
@@ -38,8 +34,6 @@ class Lesson
         $this->city = $city;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
-        $this->startDate = $startDate;
-        $this->endDate = $endDate;
         $this->workshop = $workshop;
         $this->event = $event;
     }
@@ -98,22 +92,6 @@ class Lesson
     public function getLongitude()
     {
         return $this->longitude;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
     }
 
     /**
