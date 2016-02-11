@@ -26,14 +26,12 @@ class WorkshopSlugGenerator
     public function generate($workshop){
         if($workshop instanceof Workshop) {
             $params = [
-                $workshop->getStartDate()->format("Y-m-d"),
                 $workshop->getCity(),
                 $workshop->getTitle(),
             ];
         } elseif ($workshop instanceof WorkshopCommandInterface) {
             /** @var CreateWorkshop|UpdateWorkshop $workshop */
             $params = [
-                $workshop->startDate->format("Y-m-d"),
                 $workshop->city,
                 $workshop->title,
             ];

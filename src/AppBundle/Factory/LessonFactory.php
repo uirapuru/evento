@@ -59,8 +59,6 @@ class LessonFactory
         /** @var CreateLesson|UpdateLesson $command */
         $command =  new $commandClass;
         $command->id = $lesson->getId();
-        $command->startDate = $lesson->getStartDate();
-        $command->endDate = $lesson->getEndDate();
         $command->title = $lesson->getTitle();
         $command->description = $lesson->getDescription();
         $command->address = $lesson->getAddress();

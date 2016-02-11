@@ -1,8 +1,10 @@
 <?php
 namespace AppBundle\Tests;
 
+use AppBundle\Entity\Lesson;
 use AppBundle\Entity\Workshop;
 use Carbon\Carbon;
+use Dende\Calendar\Domain\Calendar;
 
 class RegisterWorkshopTest extends BaseFunctionalTestCase
 {
@@ -41,8 +43,6 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
             "_token" => $form[$formName."[_token]"]->getValue(),
             "title" => $title,
             "description" => $this->faker->text(500),
-            "startDate" => $startDate,
-            "endDate" => $endDate,
             "url" => $this->faker->url(),
             "phone" => $this->faker->phoneNumber(),
             "email" => $this->faker->email(),
@@ -75,6 +75,24 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
         $this->assertNotNull($workshop);
         $this->assertInstanceOf(Workshop::class, $workshop);
         $this->assertCount(2, $workshop->getLessons());
+
+        $calendar = $workshop->getCalendar();
+        $this->assertNotNull($workshop);
+        $this->assertInstanceOf(Calendar::class, $calendar);
+        $this->assertCount(2, $calendar->events());
+
+        for($a = 0; $a < 2; $a++) {
+            $lesson = $workshop->getLessons()[$a];
+            $testEvent = $lesson->getEvent();
+
+            $this->assertNotNull($lesson);
+            $this->assertNotNull($testEvent);
+
+            $this->assertInstanceOf(Lesson::class, $lesson);
+            $this->assertInstanceOf(Calendar\Event::class, $testEvent);
+
+            $this->assertTrue($testEvent == $calendar->events()[$a]);
+        }
     }
 
     /**

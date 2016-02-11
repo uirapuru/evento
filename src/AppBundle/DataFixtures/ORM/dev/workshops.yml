@@ -1,12 +1,4 @@
 ---
-\DateTime (local):
-  workshop_start_date:
-    __construct:
-      - "yesterday 15:00:00"
-  workshop_end_date:
-    __construct:
-      - "+2 days 22:00:00"
-
 AppBundle\Entity\Workshop:
   workshop_1:
     title:              "Warsztaty Capoeira Regional"
@@ -17,8 +9,6 @@ AppBundle\Entity\Workshop:
       Suspendisse sagittis eu elit non imperdiet. Nam euismod diam ut augue tincidunt viverra. Pellentesque vestibulum nisi a feugiat suscipit. Duis in massa cursus, malesuada urna non, maximus ante. Curabitur sed facilisis nunc, eu placerat neque. Fusce mauris lorem, egestas id placerat sit amet, gravida eu felis. Donec mattis orci nec porta sodales. Nunc at odio augue. Nullam enim odio, lobortis eu sollicitudin et, finibus in quam. Donec et ante purus. Maecenas ac nisl ante. Cras ultricies lacus sapien, non bibendum ipsum finibus ut. Curabitur mattis odio vel semper vehicula. Fusce consectetur semper nisl, in euismod libero placerat sit amet. Fusce auctor lacus id purus ultrices, eget sagittis nunc finibus. Proin et nisi quis diam interdum ultrices.
       Sed est sem, aliquet at nulla euismod, pharetra porttitor arcu. Cras enim nisi, malesuada non gravida quis, blandit quis odio. Nullam interdum augue hendrerit lobortis auctor. Integer in lectus non urna sollicitudin vulputate. Aenean porta dapibus diam, at efficitur sem facilisis sed. In fringilla dui vitae pharetra dictum. Donec vel magna varius, bibendum mauris nec, elementum lectus. Mauris iaculis turpis ut nibh commodo, at facilisis nisl consectetur. Duis non purus pretium, suscipit tortor nec, egestas est. Integer sit amet augue id enim rhoncus ultrices ac ac neque. Fusce aliquet turpis non quam dictum sollicitudin. Nulla et dignissim turpis. Curabitur tincidunt ultricies purus, ut consequat ipsum pulvinar in. Phasellus id elit et augue ornare placerat. Pellentesque dignissim in ipsum ut finibus. Donec augue sem, blandit ac dolor ac, ultrices fringilla velit.
 
-    startDate:          "@workshop_start_date"
-    endDate:            "@workshop_end_date"
     user:               ~
     url:                www.camangula.pl
     phone:              604 411 089

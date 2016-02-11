@@ -28,12 +28,6 @@ AppBundle\Entity\Workshop:
       type: text
       nullable: false
 
-    startDate:
-      type: datetime
-
-    endDate:
-      type: datetime
-
     url:
       type: string
 

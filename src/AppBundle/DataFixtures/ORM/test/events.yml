@@ -20,7 +20,7 @@ Dende\Calendar\Domain\Calendar\Event\Repetitions (local):
       - []
 
 Dende\Calendar\Domain\Calendar\Event:
-  event_{1..100}:
+  event_{1..256}:
     __construct:
       - null
       - "@calendar_<numberBetween(1,10)>"

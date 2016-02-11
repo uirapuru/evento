@@ -15,10 +15,10 @@ AppBundle\Entity\Lesson:
       inversedBy: lessons
       cascade: ["persist"]
 
-  OneToOne:
+  oneToOne:
     event:
       targetEntity: Dende\Calendar\Domain\Calendar\Event
-      cascade: ["all"]
+      cascade: ["persist"]
 
   fields:
     title:
@@ -28,12 +28,6 @@ AppBundle\Entity\Lesson:
     description:
         type: text
         nullable: false
-
-    startDate:
-      type: datetime
-
-    endDate:
-      type: datetime
 
     address:
       type: string

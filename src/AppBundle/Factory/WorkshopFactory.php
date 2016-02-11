@@ -5,6 +5,7 @@ use AppBundle\Command\CreateWorkshop;
 use AppBundle\Entity\Workshop;
 use AppBundle\Generator\IdGeneratorInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use PhpSpec\CodeGenerator\Generator\GeneratorInterface;
 
 class WorkshopFactory
 {
@@ -29,15 +30,14 @@ class WorkshopFactory
             $this->idGenerator->generate(),
             $command->title,
             $command->description,
-            $command->startDate,
-            $command->endDate,
             new ArrayCollection(),
             null,
             $command->url,
             $command->email,
             $command->phone,
             $command->city,
-            $this->workshopSlugGenerator->generate($command)
+            $this->workshopSlugGenerator->generate($command),
+            $command->calendar
         );
     }
 }

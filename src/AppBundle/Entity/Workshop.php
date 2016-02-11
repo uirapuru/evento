@@ -14,8 +14,6 @@ class Workshop
     private $id;
     private $title;
     private $description;
-    private $startDate;
-    private $endDate;
     private $lessons;
     private $user;
     private $url;
@@ -33,21 +31,17 @@ class Workshop
      * @param $id
      * @param $title
      * @param $description
-     * @param $startDate
-     * @param $endDate
      * @param $lessons
      * @param $user
      * @param $url
      * @param $email
      * @param $phone
      */
-    public function __construct($id = null, $title = null, $description = null, $startDate = null, $endDate = null, Collection $lessons = null, $user = null, $url = null, $email = null, $phone = null, $city = null, $slug = null, Calendar $calendar = null)
+    public function __construct($id = null, $title = null, $description = null, Collection $lessons = null, $user = null, $url = null, $email = null, $phone = null, $city = null, $slug = null, Calendar $calendar = null)
     {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
-        $this->startDate = $startDate;
-        $this->endDate = $endDate;
         $this->lessons = $lessons;
         $this->user = $user;
         $this->url = $url;
@@ -80,22 +74,6 @@ class Workshop
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
     }
 
     /**
@@ -185,13 +163,29 @@ class Workshop
         $this->city = $command->city;
         $this->description = $command->description;
         $this->email = $command->email;
-        $this->endDate = $command->endDate;
-        $this->startDate = $command->startDate;
         $this->url = $command->url;
         $this->title = $command->title;
     }
 
+    /**
+     * @param $slug
+     */
     public function updateSlug($slug) {
         $this->slug = $slug;
+    }
+
+    public function getStartDate(){
+        return min($this->getLessonsDates());
+    }
+
+    public function getEndDate(){
+        return max($this->getLessonsDates());
+    }
+
+    private function getLessonsDates()
+    {
+        return array_map(function(Lesson $lesson){
+            return $lesson->getStartDate();
+        }, $this->getLessons()->toArray());
     }
 }

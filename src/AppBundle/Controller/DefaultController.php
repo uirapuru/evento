@@ -26,7 +26,7 @@ class DefaultController extends Controller
     {
         return [
             "workshops" => $this->getDoctrine()->getManager()->getRepository("AppBundle:Workshop")->findBy(
-                [], ["startDate" => "DESC"], 10, 0
+                [], [], 10, 0
             )
         ];
     }

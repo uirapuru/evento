@@ -1,6 +1,6 @@
 ---
 AppBundle\Entity\Lesson:
-  lesson_{1..100}:
+  lesson_{1..256}:
     id:                     ~
     title:                  "[title] <sentence()>"
     description:            "[desc] <text(200)>"
@@ -9,4 +9,4 @@ AppBundle\Entity\Lesson:
     city:                   <city()>
     latitude:               0
     longitude:              0
-    event:                  @event_<numberBetween(1,100)>
+    event (unique):         @event_<current()>

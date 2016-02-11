@@ -38,11 +38,21 @@ services:
   app.handler.create_workshop:
     class: AppBundle\Handler\CreateWorkshopHandler
     arguments:
-      - @app.factory.workshop
       - @app.repository.workshop
+      - @dende_calendar.calendar_repository
+      - @dende_calendar.event_repository
+      - @app.factory.workshop
       - @app.factory.lesson
+      - @dende_calendar.factory.event
+      - @dende_calendar.factory.occurrence
     tags:
       - {name: tactician.handler, command: AppBundle\Command\CreateWorkshop }
+
+  app.handler.create_event:
+    class: Dende\Calendar\Application\Handler\CreateEventHandler
+    parent: dende_calendar.handler.create_event
+    tags:
+      - {name: tactician.handler, command: Dende\Calendar\Application\Command\CreateEventCommand }
 
   app.handler.update_workshop:
     class: AppBundle\Handler\UpdateWorkshopHandler

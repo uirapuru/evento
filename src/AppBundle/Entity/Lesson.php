@@ -1,16 +1,35 @@
 <?php
 namespace AppBundle\Entity;
 
+use Dende\Calendar\Domain\Calendar\Event;
+
 class Lesson
 {
+    /** @var string */
     private $id;
+
+    /** @var string */
     private $title;
+
+    /** @var string */
     private $description;
+
+    /** @var string */
     private $address;
+
+    /** @var string */
     private $city;
+
+    /** @var float */
     private $latitude;
+
+    /** @var float */
     private $longitude;
+
+    /** @var Workshop */
     private $workshop;
+
+    /** @var Event */
     private $event;
 
     /**
@@ -25,7 +44,7 @@ class Lesson
      * @param $workshop
      * @param $event
      */
-    public function __construct($id = null, $title = null, $description = null, $address = null, $city = null, $latitude = null, $longitude = null, $workshop = null, Event $event = null)
+    public function __construct($id = null, $title = null, $description = null, $address = null, $city = null, $latitude = null, $longitude = null, Workshop $workshop = null, Event $event = null)
     {
         $this->id = $id;
         $this->title = $title;
@@ -103,7 +122,7 @@ class Lesson
     }
 
     /**
-     * @return mixed
+     * @return Event
      */
     public function getEvent()
     {
@@ -113,5 +132,19 @@ class Lesson
     public function setWorkshop(Workshop $workshop)
     {
         $this->workshop = $workshop;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate(){
+        return $this->getEvent()->startDate();
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEndDate(){
+        return $this->getEvent()->endDate();
     }
 }

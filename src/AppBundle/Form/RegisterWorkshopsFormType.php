@@ -22,21 +22,14 @@ class RegisterWorkshopsFormType extends AbstractType
                 "mapped" => false
             ])
             ->add("description", "textarea")
-            ->add("startDate", "datetime", [
-                "date_format" => "d.M.y H:i",
-                "widget" => "single_text"
-            ])
-            ->add("endDate", "datetime", [
-                "date_format" => "d.M.y H:i",
-                "widget" => "single_text"
-            ])
             ->add(
                 $builder->create("lessons", "collection", [
                     'entry_type'   => LessonFormType::class,
                     'allow_add'    => true,
                     'allow_delete' => true,
                     'by_reference' => false
-                ])->addModelTransformer($options["lessonTransformer"])
+                ])
+//                    ->addModelTransformer($options["lessonTransformer"])
             )
             ->add("url")
             ->add("phone")
