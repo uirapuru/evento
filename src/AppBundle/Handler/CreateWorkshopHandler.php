@@ -113,7 +113,6 @@ class CreateWorkshopHandler
             $lesson = $this->lessonFactory->createFromCommand($lessonCommand);
 
             $workshop->addLesson($lesson);
-
         }
 
         $this->calendarRepository->insert($calendar);

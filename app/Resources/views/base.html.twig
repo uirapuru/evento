@@ -15,13 +15,12 @@
             <div class="header clearfix">
                 <nav>
                     <ul class="nav nav-pills pull-right">
-                        <li role="presentation" class="active"><a href="{{ path("evento_homepage") }}">Główna</a></li>
-                        <li role="presentation"><a href="{{ path("evento_search") }}">Szukaj</a></li>
+                        <li role="presentation" class="active"><a href="{{ path("evento_search") }}">Szukaj</a></li>
                         <li role="presentation"><a href="{{ path("evento_schedule") }}">Kalendarz</a></li>
-                        <li role="presentation"><a href="{{ path("evento_register") }}">Zarejestruj</a></li>
+                        <li role="presentation"><a href="{{ path("evento_register") }}">Dodaj</a></li>
                     </ul>
                 </nav>
-                <h3 class="text-muted">Evento</h3>
+                <h3 class="text-muted"><a href="{{ path("evento_homepage") }}">Eventoo.pl</a></h3>
             </div>
 
             {% for flash_message in app.session.flashbag.get('notice') %}
@@ -42,6 +41,8 @@
             <script src="//code.jquery.com/jquery-2.2.0.min.js" crossorigin="anonymous"></script>
             <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js" crossorigin="anonymous"></script>
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+            <script src="{{ asset('bundles/dendecalendar/js/bootstrap-datetimepicker.min.js') }}"></script>
+            <script src="{{ asset('bundles/dendecalendar/js/locales/bootstrap-datetimepicker.pl.js') }}"></script>
         {% endblock %}
     </body>
 

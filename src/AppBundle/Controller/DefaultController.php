@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Command\CreateWorkshop;
 use AppBundle\Command\UpdateLesson;
 use AppBundle\Command\UpdateWorkshop;
+use AppBundle\Controller\Helper\WorkshopsJsonWrapper;
 use AppBundle\Entity\Workshop;
 use Carbon\Carbon;
 use DateTime;
@@ -83,17 +84,13 @@ class DefaultController extends Controller
         $start = Carbon::parse($request->get('start'));
         $end = Carbon::parse($request->get('end'));
 
-        $events = $this->get('dende_calendar.occurrences_provider')->getAll($start, $end, !$request->get("noroute", false));
+        $events = $this->get("app.helper.lesson_json_wrapper")->decorate(
+            $this->get("app.repository.lesson")->findByPeriod($start, $end)
+        );
 
-        $workshops = array_map(function(Workshop $workshop) {
-            return [
-                "id" => $workshop->getSlug(),
-                "start" => $workshop->getStartDate()->format("Y-m-d H:i:s"),
-                "end" => $workshop->getEndDate()->format("Y-m-d H:i:s"),
-                "rendering" => "background",
-                "editable" => false
-            ];
-        }, $this->get('app.repository.workshop')->findByPeriod($start, $end));
+        $workshops = $this->get("app.helper.workshops_json_wrapper")->decorate(
+            $this->get('app.repository.workshop')->findByPeriod($start, $end)
+        );
 
         return new JsonResponse(array_merge($events, $workshops));
     }

@@ -37,6 +37,21 @@
         var $addLessonLink = $('<a href="#" class="btn btn-default">Add a lesson</a>');
         var $newLinkLi = $('<li></li>').append($addLessonLink);
 
+        function setupDatetimes() {
+            $("input[type=datetime]").datetimepicker({
+                format: 'yyyy-mm-dd',
+                weekStart: 1,
+                autoclose: true,
+                startView: 2,
+                minView: 2,
+                maxView: 3,
+                clearBtn: true,
+                todayBtn: true,
+                todayHighlight: true,
+                language: "pl"
+            });
+        }
+
         function addLessonForm($collectionHolder, $newLinkLi) {
             // Get the data-prototype explained earlier
             var prototype = $collectionHolder.data('prototype');
@@ -73,7 +88,19 @@
 
                 // add a new lesson form (see next code block)
                 addLessonForm($collectionHolder, $newLinkLi);
+                setupDatetimes();
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(function(){
+            setupDatetimes();
+        });
+    </script>
 {% endblock javascripts %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("bundles/dendecalendar/css/bootstrap-datetimepicker.min.css") }}" />
+{% endblock stylesheets %}

@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\EntityRepository;
 
 class LessonRepository extends EntityRepository
@@ -23,5 +24,31 @@ class LessonRepository extends EntityRepository
         $em = $this->getEntityManager();
         $em->remove($existingLesson);
         $em->flush();
+    }
+
+    /**
+     * @param DateTime $startDate
+     * @param DateTime $endDate
+     * @return array|Workshop[]
+     */
+    public function findByPeriod(DateTime $startDate, DateTime $endDate)
+    {
+        $qb = $this->createQueryBuilder("l");
+        $expr = $qb->expr();
+
+        $qb->join("l.event", "e");
+
+        $qb->where($expr->andX(
+            $expr->gte("e.startDate", ":start"),
+            $expr->lte("e.startDate", ":end")
+        ))
+        ->setParameters([
+            "start" => $startDate,
+            "end" => $endDate
+        ]);
+
+        $qb->orderBy("e.startDate", "ASC");
+
+        return $qb->getQuery()->getResult();
     }
 }

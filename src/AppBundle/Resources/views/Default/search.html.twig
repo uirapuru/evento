@@ -45,3 +45,29 @@
         {% endfor %}
     </div>
 {% endblock body %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("bundles/dendecalendar/css/bootstrap-datetimepicker.min.css") }}" />
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(function(){
+            $("#search_workshop_startDate, #search_workshop_endDate").datetimepicker({
+                format: 'yyyy-mm-dd',
+                weekStart: 1,
+                autoclose: true,
+                startView: 2,
+                minView: 2,
+                maxView: 3,
+                clearBtn: true,
+                todayBtn: true,
+                todayHighlight: true,
+                language: "pl"
+            });
+        });
+    </script>
+{% endblock javascripts %}

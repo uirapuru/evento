@@ -45,7 +45,7 @@ class LessonFactory
             null,
             null,
             $command->workshop,
-            null
+            $command->event
         );
     }
 

@@ -6,6 +6,16 @@ parameters:
   lesson.class.command.update:  AppBundle\Command\UpdateLesson
 
 services:
+  app.helper.workshops_json_wrapper:
+    class: AppBundle\Controller\Helper\WorkshopsJsonWrapper
+    arguments:
+      - @router
+
+  app.helper.lesson_json_wrapper:
+    class: AppBundle\Controller\Helper\LessonsJsonWrapper
+    arguments:
+      - @router
+
   app.form.transform.lesson_command:
     class: AppBundle\Form\Transformer\LessonToCommand
     arguments:

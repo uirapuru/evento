@@ -80,16 +80,19 @@ class WorkshopRepository extends EntityRepository
         $qb = $this->createQueryBuilder("w");
         $expr = $qb->expr();
 
+        $qb->join("w.lessons", "l");
+        $qb->join("l.event", "e");
+
         $qb->where($expr->andX(
-            $expr->gte("w.startDate", ":start"),
-            $expr->lte("w.startDate", ":end")
+            $expr->gte("e.startDate", ":start"),
+            $expr->lte("e.startDate", ":end")
         ))
         ->setParameters([
             "start" => $startDate,
             "end" => $endDate
         ]);
 
-        $qb->orderBy("w.startDate", "ASC");
+        $qb->orderBy("e.startDate", "ASC");
 
         return $qb->getQuery()->getResult();
     }
