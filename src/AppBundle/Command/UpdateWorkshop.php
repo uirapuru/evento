@@ -1,7 +1,12 @@
 <?php
 namespace AppBundle\Command;
 
+use AppBundle\Entity\Lesson;
 use AppBundle\Entity\Workshop;
+use AppBundle\Factory\LessonFactory;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * Class UpdateWorkshop
@@ -33,9 +38,16 @@ class UpdateWorkshop implements WorkshopCommandInterface
         $this->startDate = $workshop->getStartDate();
         $this->endDate = $workshop->getEndDate();
         $this->city = $workshop->getCity();
-        $this->lessons = $workshop->getLessons();
+        $this->lessons = $this->convertLessons($workshop->getLessons());
         $this->phone = $workshop->getPhone();
         $this->url = $workshop->getUrl();
         $this->email = $workshop->getEmail();
+    }
+
+    private function convertLessons(Collection $lessons)
+    {
+        return array_map(function(Lesson $lesson){
+            return LessonFactory::createUpdateCommand($lesson);
+        }, $lessons->toArray());
     }
 }

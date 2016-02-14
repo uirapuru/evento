@@ -67,4 +67,22 @@ class LessonFactory
 
         return $command;
     }
+
+    /**
+     * @param Lesson $lesson
+     * @return CreateLesson|UpdateLesson
+     */
+    static function createUpdateCommand(Lesson $lesson) {
+        $command =  new UpdateLesson();
+        $command->id = $lesson->getId();
+        $command->title = $lesson->getTitle();
+        $command->description = $lesson->getDescription();
+        $command->address = $lesson->getAddress();
+        $command->city = $lesson->getCity();
+        $command->workshop = $lesson->getWorkshop();
+        $command->startDate = $lesson->getStartDate();
+        $command->endDate = $lesson->getEndDate();
+
+        return $command;
+    }
 }

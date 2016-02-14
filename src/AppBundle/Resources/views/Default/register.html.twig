@@ -103,4 +103,23 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset("bundles/dendecalendar/css/bootstrap-datetimepicker.min.css") }}" />
+
+    <style>
+        ul.lessons {
+            list-style: none;
+        }
+        ul.lessons li {
+            padding: 24px;
+        }
+        ul.lessons li:nth-child(2n) {
+            background: lightgray;
+        }
+        ul.lessons li:nth-child(2n-1) {
+            background: none;
+        }
+        ul.lessons li:last-child {
+            background: none;
+        }
+
+    </style>
 {% endblock stylesheets %}

@@ -13,7 +13,9 @@ class LessonFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("title")
+            ->add("title", "text", [
+                "required" => true
+            ])
             ->add("description", "textarea")
             ->add("address")
             ->add("city")
