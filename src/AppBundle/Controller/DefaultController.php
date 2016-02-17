@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Command\CreateLesson;
 use AppBundle\Command\CreateWorkshop;
 use AppBundle\Command\UpdateLesson;
 use AppBundle\Command\UpdateWorkshop;
@@ -40,10 +41,12 @@ class DefaultController extends Controller
     {
         $response = new Response(null, 200);
 
-        $form = $this->createForm("register_workshops_form_type", new CreateWorkshop(), [
+        $createCommand = new CreateWorkshop();
+        $createCommand->lessons = [new CreateLesson()];
+
+        $form = $this->createForm("register_workshops_form_type", $createCommand, [
             "action" => $this->generateUrl("evento_register"),
             "method" => "POST",
-            "lessonTransformer" => $this->get("app.form.transform.lesson_command")
         ]);
 
         if($request->isMethod("POST"))
@@ -53,7 +56,7 @@ class DefaultController extends Controller
             {
                 $this->get("tactician.commandbus")->handle($form->getData());
                 $this->addFlash("success", "Dziękujemy za dodanie nowej informacji, po weryfikacji przez moderatora pojawi się w bazie");
-                $this->redirectToRoute("evento_homepage");
+                return $this->redirectToRoute("evento_homepage");
             } else {
                 $response->setStatusCode(400);
             }
@@ -84,15 +87,16 @@ class DefaultController extends Controller
         $start = Carbon::parse($request->get('start'));
         $end = Carbon::parse($request->get('end'));
 
-        $events = $this->get("app.helper.lesson_json_wrapper")->decorate(
-            $this->get("app.repository.lesson")->findByPeriod($start, $end)
-        );
+//        $events = $this->get("app.helper.lesson_json_wrapper")->decorate(
+//            $this->get("app.repository.lesson")->findByPeriod($start, $end)
+//        );
 
         $workshops = $this->get("app.helper.workshops_json_wrapper")->decorate(
             $this->get('app.repository.workshop')->findByPeriod($start, $end)
         );
 
-        return new JsonResponse(array_merge($events, $workshops));
+//        return new JsonResponse(array_merge($events, $workshops));
+        return new JsonResponse($workshops);
     }
 
     /**
@@ -149,8 +153,7 @@ class DefaultController extends Controller
 
         $form = $this->createForm("register_workshops_form_type", new UpdateWorkshop($workshop), [
             "action" => $this->generateUrl("evento_edit", ["slug" => $workshop->getSlug()]),
-            "method" => "POST",
-            "lessonTransformer" => $this->get("app.form.transform.lesson_command")->setCommandClass(UpdateLesson::class)
+            "method" => "POST"
         ]);
 
         if($request->isMethod("POST"))

@@ -5,14 +5,12 @@ use AppBundle\Command\CreateWorkshop;
 use AppBundle\Entity\Workshop;
 use AppBundle\Generator\IdGeneratorInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use PhpSpec\CodeGenerator\Generator\GeneratorInterface;
 
 class WorkshopFactory
 {
     /** @var  IdGeneratorInterface */
     private $idGenerator;
 
-    /** @var  GeneratorInterface */
     private $workshopSlugGenerator;
 
     /**
@@ -35,7 +33,6 @@ class WorkshopFactory
             $command->url,
             $command->email,
             $command->phone,
-            $command->city,
             $this->workshopSlugGenerator->generate($command),
             $command->calendar
         );

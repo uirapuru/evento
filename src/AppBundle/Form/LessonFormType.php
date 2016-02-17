@@ -14,18 +14,33 @@ class LessonFormType extends AbstractType
     {
         $builder
             ->add("title", "text", [
-                "required" => true
+                "required" => true,
+                "label" => "form.title",
             ])
-            ->add("description", "textarea")
-            ->add("address")
-            ->add("city")
+            ->add("description", "textarea", [
+                "label" => "form.description",
+            ])
+            ->add("address", "text", [
+                "label" => "form.address",
+            ])
+            ->add("city", "text", [
+                "label" => "form.city",
+            ])
             ->add("startDate", "datetime", [
-                "date_format" => "d.M.y H:i",
-                "widget" => "single_text"
+                "format" => "yyyy-MM-dd HH:mm",
+                "widget" => "single_text",
+                "label" => "form.startDate",
+                "attr" => [
+                    "autocomplete" => "off"
+                ]
             ])
             ->add("endDate", "datetime", [
-                "date_format" => "d.M.y H:i",
-                "widget" => "single_text"
+                "format" => "yyyy-MM-dd HH:mm",
+                "widget" => "single_text",
+                "label" => "form.endDate",
+                "attr" => [
+                    "autocomplete" => "off"
+                ]
             ])
         ;
     }

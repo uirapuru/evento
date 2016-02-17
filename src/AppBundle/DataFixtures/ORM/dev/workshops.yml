@@ -13,6 +13,5 @@ AppBundle\Entity\Workshop:
     url:                www.camangula.pl
     phone:              604 411 089
     email:              uirapuru@tlen.pl
-    city:               Gdynia
     slug:               <slug()>
     calendar (unique):  "@calendar_1"

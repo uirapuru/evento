@@ -7,6 +7,5 @@ AppBundle\Entity\Workshop:
     url:                <url()>
     phone:              <phoneNumber()>
     email:              <email()>
-    city:               <city()>
     slug:               <slug()>
     calendar (unique):  @calendar_<current()>

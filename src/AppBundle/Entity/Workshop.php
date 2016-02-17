@@ -11,18 +11,26 @@ use Doctrine\Common\Collections\Collection;
  */
 class Workshop
 {
+    /** @var string */
     private $id;
+    /** @var string */
     private $title;
+    /** @var string */
     private $description;
+    /** @var Collection|Lesson[] */
     private $lessons;
     private $user;
+    /** @var string */
     private $url;
-    private $city;
     private $group;
     private $organizatorName;
+    /** @var string */
     private $email;
+    /** @var string */
     private $phone;
+    /** @var string */
     private $slug;
+    /** @var Calendar */
     private $calendar;
 
 
@@ -37,7 +45,7 @@ class Workshop
      * @param $email
      * @param $phone
      */
-    public function __construct($id = null, $title = null, $description = null, Collection $lessons = null, $user = null, $url = null, $email = null, $phone = null, $city = null, $slug = null, Calendar $calendar = null)
+    public function __construct($id = null, $title = null, $description = null, Collection $lessons = null, $user = null, $url = null, $email = null, $phone = null, $slug = null, Calendar $calendar = null)
     {
         $this->id = $id;
         $this->title = $title;
@@ -47,7 +55,6 @@ class Workshop
         $this->url = $url;
         $this->email = $email;
         $this->phone = $phone;
-        $this->city = $city;
         $this->slug = $slug;
         $this->calendar = $calendar;
     }
@@ -134,14 +141,6 @@ class Workshop
     /**
      * @return null
      */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @return null
-     */
     public function getSlug()
     {
         return $this->slug;
@@ -187,5 +186,9 @@ class Workshop
         return array_map(function(Lesson $lesson){
             return $lesson->getStartDate();
         }, $this->getLessons()->toArray());
+    }
+
+    public function getCity(){
+        return $this->lessons->first()->getCity();
     }
 }

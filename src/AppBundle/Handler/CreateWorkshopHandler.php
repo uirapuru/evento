@@ -76,6 +76,7 @@ class CreateWorkshopHandler
      * @throws Exception
      */
     public function handle(CreateWorkshop $command){
+
         if(!is_array($command->lessons) || count($command->lessons) === 0) {
             throw new Exception("Lessons collection can't be empty!");
         }

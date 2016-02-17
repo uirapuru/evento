@@ -34,7 +34,7 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
         $submitButton = $crawler->selectButton($formName."_submit");
         $form = $submitButton->form();
 
-        $dateTimeFormat = "d.m.Y H:i";
+        $dateTimeFormat = "Y-m-d H:i";
         $title = $this->faker->sentence();
         $startDate = $this->faker->dateTimeBetween("5 days", "5 days")->format($dateTimeFormat);
         $endDate = $this->faker->dateTimeBetween($startDate, Carbon::parse($startDate)->addDays(10))->format($dateTimeFormat);
@@ -46,7 +46,6 @@ class RegisterWorkshopTest extends BaseFunctionalTestCase
             "url" => $this->faker->url(),
             "phone" => $this->faker->phoneNumber(),
             "email" => $this->faker->email(),
-            "city" => $this->faker->city(),
             "lessons" => [
                 0 => [
                     "title" => $title,

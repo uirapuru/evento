@@ -2,13 +2,11 @@
 
 {% block body %}
     {{ form_start(form) }}
-        {{ form_row(form.city) }}
         {{ form_row(form.title) }}
-        {{ form_row(form.slug) }}
         {{ form_row(form.description) }}
 
         <div class="form-group">
-            {{ form_label(form.lessons) }}
+            <label>{{ "Wydarzenia w trakcie imprezy (pojawią na mapie i w kalendarzu)"|trans }}:</label>
 
             <div class="col-sm-10">
 
@@ -34,16 +32,25 @@
     <script>
         var $collectionHolder;
         // setup an "add a lesson" link
-        var $addLessonLink = $('<a href="#" class="btn btn-default">Add a lesson</a>');
+        var $addLessonLink = $('<a href="#addNew" class="btn btn-default">{{ "form.add_lesson"|trans }}</a><a name="addNew"></a>');
         var $newLinkLi = $('<li></li>').append($addLessonLink);
+        var $removeLink = '<a href="#" class="btn btn-link pull-right remove-lesson">{{ "form.remove_lesson"|trans }}</a>';
+
+        $("ul.lessons").on('click', 'a.remove-lesson', function (e) {
+            e.preventDefault();
+            $(e.target).parents("li").remove();
+            var index = $collectionHolder.data('index');
+            $collectionHolder.data('index', index - 1);
+        });
 
         function setupDatetimes() {
-            $("input[type=datetime]").datetimepicker({
-                format: 'yyyy-mm-dd',
+            console.log("setting up date time");
+            $("input[name*='startDate'], input[name*='endDate']").datetimepicker({
+                format: 'yyyy-mm-dd hh:ii',
                 weekStart: 1,
                 autoclose: true,
                 startView: 2,
-                minView: 2,
+                minView: 0,
                 maxView: 3,
                 clearBtn: true,
                 todayBtn: true,
@@ -67,29 +74,21 @@
             $collectionHolder.data('index', index + 1);
 
             // Display the form in the page in an li, before the "Add a lesson" link li
-            var $newFormLi = $('<li></li>').append(newForm);
+            var $newFormLi = $('<li></li>').append(newForm).append($removeLink);
             $newLinkLi.before($newFormLi);
         }
 
         $(function () {
-            // Get the ul that holds the collection of lessons
             $collectionHolder = $('ul.lessons');
-
-            // add the "add a lesson" anchor and li to the lessons ul
             $collectionHolder.append($newLinkLi);
-
-            // count the current form inputs we have (e.g. 2), use that as the new
-            // index when inserting a new item (e.g. 2)
             $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
             $addLessonLink.on('click', function (e) {
-                // prevent the link from creating a "#" on the URL
-                e.preventDefault();
-
-                // add a new lesson form (see next code block)
+//                e.preventDefault();
                 addLessonForm($collectionHolder, $newLinkLi);
                 setupDatetimes();
             });
+
         });
     </script>
 
@@ -109,7 +108,7 @@
             list-style: none;
         }
         ul.lessons li {
-            padding: 24px;
+            padding: 32px 24px;
         }
         ul.lessons li:nth-child(2n) {
             background: lightgray;

@@ -1,0 +1,15 @@
+form:
+  add_lesson:         Dodaj zajęcia
+  remove_lesson:      Usuń
+  workshop_title:     Nazwa imprezy
+  description:        Opis
+  url:                Strona internetowa
+  phone:              Kontakt telefoniczny
+  email:              E-mail
+  register:           Zarejestruj imprezę
+
+  title:              Nazwa
+  address:            Lokalizacja
+  city:               Miasto
+  startDate:          Początek
+  endDate:            Koniec

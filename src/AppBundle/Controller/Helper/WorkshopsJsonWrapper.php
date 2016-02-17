@@ -2,6 +2,7 @@
 namespace AppBundle\Controller\Helper;
 
 use AppBundle\Entity\Workshop;
+use DateTime;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
@@ -31,9 +32,9 @@ class WorkshopsJsonWrapper
         $workshops = array_map(function(Workshop $workshop) {
             return [
                 "id" => $workshop->getSlug(),
-                "start" => $workshop->getStartDate()->format("Y-m-d H:i:s"),
-                "end" => $workshop->getEndDate()->format("Y-m-d H:i:s"),
-                "rendering" => "background",
+                "start" => $workshop->getStartDate()->format(DateTime::ISO8601),
+                "end" => $workshop->getEndDate()->format(DateTime::ISO8601),
+                "title" => sprintf("%s: %s", $workshop->getCity(), $workshop->getTitle()),
                 "editable" => false,
                 "backgroundColor" => '',
                 "url" => $this->router->generate("evento_show", ["slug" => $workshop->getSlug()]),

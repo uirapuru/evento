@@ -37,9 +37,6 @@ AppBundle\Entity\Workshop:
     email:
       type: string
 
-    city:
-      type: string
-
     slug:
       type: string
       unique: true

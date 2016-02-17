@@ -16,27 +16,33 @@ class RegisterWorkshopsFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("title")
-            ->add("slug", "text", [
-                "read_only" => true,
-                "mapped" => false
+            ->add("title", "text", [
+                "label" => "form.workshop_title"
             ])
-            ->add("description", "textarea")
-            ->add(
-                $builder->create("lessons", "collection", [
-                    'entry_type'   => LessonFormType::class,
-                    'allow_add'    => true,
-                    'allow_delete' => true,
-                    'by_reference' => false
-                ])
-//                    ->addModelTransformer($options["lessonTransformer"])
-            )
-            ->add("url")
-            ->add("phone")
-            ->add("email")
-            ->add("city", "text")
+            ->add("description", "textarea", [
+                "label" => "form.description"
+            ])
+            ->add("lessons", "collection", [
+                'entry_type'   => LessonFormType::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                "label" => false,
+            ])
+            ->add("url", "url", [
+                "label" => "form.url"
+            ])
+            ->add("phone", "text", [
+                "label" => "form.phone"
+            ])
+            ->add("email", "email", [
+                "label" => "form.email"
+            ])
             ->add("submit", "submit", [
-                "label" => "Zarejestruj"
+                "label" => "form.register",
+                "attr" => [
+                    "class" => "btn btn-success pull-right"
+                ]
             ])
         ;
     }
@@ -46,7 +52,6 @@ class RegisterWorkshopsFormType extends AbstractType
         $resolver->setDefaults([
             "data_class" => WorkshopCommandInterface::class,
             "cities" => [],
-            "lessonTransformer" => null
         ]);
     }
 

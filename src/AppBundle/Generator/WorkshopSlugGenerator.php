@@ -31,8 +31,9 @@ class WorkshopSlugGenerator
             ];
         } elseif ($workshop instanceof WorkshopCommandInterface) {
             /** @var CreateWorkshop|UpdateWorkshop $workshop */
+            $firstLesson = current($workshop->lessons);
             $params = [
-                $workshop->city,
+                $firstLesson->city,
                 $workshop->title,
             ];
         }

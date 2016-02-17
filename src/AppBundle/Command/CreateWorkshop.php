@@ -16,12 +16,6 @@ class CreateWorkshop implements WorkshopCommandInterface
     /** @var string */
     public $description;
 
-    /** @var  \DateTime */
-    public $startDate;
-
-    /** @var  \DateTime */
-    public $endDate;
-
     /** @var ArrayCollection|LessonCommandInterface[] */
     public $lessons;
 
@@ -33,9 +27,6 @@ class CreateWorkshop implements WorkshopCommandInterface
 
     /** @var string */
     public $phone;
-
-    /** @var string */
-    public $city;
 
     /** @var Calendar */
     public $calendar;
