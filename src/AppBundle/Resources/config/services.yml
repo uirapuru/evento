@@ -38,6 +38,8 @@ services:
     factory: [@doctrine.orm.entity_manager, getRepository]
     arguments:
       - %workshop.class%
+    calls:
+      - [setPaginator, [@knp_paginator]]
 
   app.repository.lesson:
     class: AppBundle\Entity\LessonRepository

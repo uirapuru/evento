@@ -1323,7 +1323,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/47dd44c74d55160a0c46f6d732024a41dcf9a6bc",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/11088fbb819088308d297c34860b3dde5411fc9a",
                 "reference": "f59678b9896c1ff3e78b7ab418a0e8fa337d6f81",
                 "shasum": ""
             },
@@ -1441,7 +1441,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/ed99e9a7cbbf928047ec8959520d995db948d10b",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/913a0ee822caa0589b86d8695d94b1190388367f",
                 "reference": "ed99e9a7cbbf928047ec8959520d995db948d10b",
                 "shasum": ""
             },
@@ -2235,7 +2235,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/0b65790fc70095dacb9c54164996ea0559ef40a8",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/2c95f380e7b3cc356e76373c0e4cdbbc4d1a323f",
                 "reference": "0b65790fc70095dacb9c54164996ea0559ef40a8",
                 "shasum": ""
             },
@@ -3513,7 +3513,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/2c167426fc24f9de116345195bc1697a748ee847",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/c4c5caff48a2f3b17e3cc988e2b9d7a785779f39",
                 "reference": "2c167426fc24f9de116345195bc1697a748ee847",
                 "shasum": ""
             },
@@ -4404,7 +4404,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/d6418d4b367f9b3fd89387fdbd7c2ecc945c037b",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/2ddab1d055059e00a3477b09979123624db291fd",
                 "reference": "1d8d43b4e7d2e40e9e6109de24691580fd8cd9fa",
                 "shasum": ""
             },
@@ -6124,7 +6124,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fb92b101c2dc5ecb6800d82c72c79b0e956831e8",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f81a1fa79c7fc93b8ab1ef60e48c19589a4c1f7e",
                 "reference": "fb92b101c2dc5ecb6800d82c72c79b0e956831e8",
                 "shasum": ""
             },
@@ -6668,7 +6668,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/7cecde705abef667a6bc67429d767046aa1cce11",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/58470a6685844a1c5e3c876d89708f7c219f3874",
                 "reference": "858934b6ae9ab279d805fc286dba9fa73daa3d3c",
                 "shasum": ""
             },

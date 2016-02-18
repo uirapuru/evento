@@ -51,4 +51,23 @@ class LessonRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /**
+     * @return array|string[]
+     */
+    public function getUniqueCities()
+    {
+        $qb = $this->createQueryBuilder("l");
+
+        $query = $qb->select("l.city")
+            ->distinct(true)
+            ->orderBy("l.city", "ASC")
+            ->getQuery();
+
+        $result = array_map(function($element) {
+            return $element["city"];
+        }, $query->getArrayResult());
+
+        return $result;
+    }
 }

@@ -87,15 +87,10 @@ class DefaultController extends Controller
         $start = Carbon::parse($request->get('start'));
         $end = Carbon::parse($request->get('end'));
 
-//        $events = $this->get("app.helper.lesson_json_wrapper")->decorate(
-//            $this->get("app.repository.lesson")->findByPeriod($start, $end)
-//        );
-
         $workshops = $this->get("app.helper.workshops_json_wrapper")->decorate(
             $this->get('app.repository.workshop')->findByPeriod($start, $end)
         );
 
-//        return new JsonResponse(array_merge($events, $workshops));
         return new JsonResponse($workshops);
     }
 
@@ -107,7 +102,9 @@ class DefaultController extends Controller
      */
     public function searchAction(Request $request){
         $repository = $this->get("app.repository.workshop");
-        $cities = $repository->getUniqueCities();
+        $cities = $this->get("app.repository.lesson")->getUniqueCities();
+
+        $page = $request->get("page", 1);
 
         $form = $this->createForm("search_workshop",
             [
@@ -131,7 +128,7 @@ class DefaultController extends Controller
                 $results = $repository->search($form->getData());
             }
         } else {
-            $results = $repository->findAll([], ["startDate" => "ASC"]);
+            $results = $repository->findAllPaginated($page, 1);
         }
 
         return [
