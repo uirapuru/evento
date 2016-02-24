@@ -10,7 +10,7 @@ framework:
         collect: true
 
 web_profiler:
-    toolbar: false
+    toolbar: true
     intercept_redirects: false
 
 swiftmailer:

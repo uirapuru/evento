@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Entity;
 
+use AppBundle\DTO\SearchFilter;
 use DateTime;
 use Doctrine\ORM\EntityRepository;
 
@@ -42,10 +43,10 @@ class LessonRepository extends EntityRepository
             $expr->gte("e.startDate", ":start"),
             $expr->lte("e.startDate", ":end")
         ))
-        ->setParameters([
-            "start" => $startDate,
-            "end" => $endDate
-        ]);
+            ->setParameters([
+                "start" => $startDate,
+                "end" => $endDate
+            ]);
 
         $qb->orderBy("e.startDate", "ASC");
 
@@ -64,10 +65,75 @@ class LessonRepository extends EntityRepository
             ->orderBy("l.city", "ASC")
             ->getQuery();
 
-        $result = array_map(function($element) {
+        $result = array_map(function ($element) {
             return $element["city"];
         }, $query->getArrayResult());
 
         return $result;
+    }
+
+    /**
+     * @param SearchFilter $filter
+     * @return array
+     */
+    public function findForCriteria(SearchFilter $filter)
+    {
+        if ($filter->isEmpty()) {
+            return [];
+        }
+
+        $qb = $this->createQueryBuilder("l");
+        $expr = $qb->expr();
+
+        $qb->select("w.id AS workshop_id, l.city, e.startDate, e.endDate");
+
+        $qb->join("l.event", "e");
+        $qb->join("l.workshop", "w");
+
+        $qb->addOrderBy("w.id");
+        $qb->addOrderBy("e.startDate", "ASC");
+
+        if (!is_null($filter->city)) {
+            $filter->city = strtolower($filter->city);
+            $qb->andWhere("LOWER(l.city) = :city")->setParameter("city", $filter->city);
+        }
+
+        if (!is_null($filter->search)) {
+            $filter->search = sprintf("%%%s%%", strtolower($filter->search));
+            $qb->andWhere($expr->orX(
+                $expr->like("LOWER(l.title)", ':search'),
+                $expr->like("LOWER(l.description)", ':search')
+            ))
+                ->setParameter("search", $filter->search);
+        }
+
+        if (!is_null($filter->startDate)) {
+            $qb->andWhere($expr->gte("e.startDate", ":start"));
+            $qb->setParameter("start", $filter->startDate);
+        }
+
+        if (!is_null($filter->endDate)) {
+            $qb->andWhere($expr->lte("e.endDate", ":end"));
+            $qb->setParameter("end", $filter->endDate);
+        }
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
+    public function findByWorkshopIds($workshopIds = [])
+    {
+        $qb = $this->createQueryBuilder("l");
+        $expr = $qb->expr();
+        $qb->select("w.id AS workshop_id, l.city, e.startDate, e.endDate");
+
+        $qb->join("l.event", "e");
+        $qb->join("l.workshop", "w");
+
+        $qb->addOrderBy("w.id");
+        $qb->addOrderBy("e.startDate", "ASC");
+
+        $qb->where($expr->in("w.id", $workshopIds));
+
+        return $qb->getQuery()->getArrayResult();
     }
 }

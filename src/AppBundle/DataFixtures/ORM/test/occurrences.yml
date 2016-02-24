@@ -16,3 +16,10 @@ Dende\Calendar\Domain\Calendar\Event\Occurrence: #$id, DateTime $startDate, Dura
       - <dateTimeBetween('-14 days', '14 days')>
       - "@occurrence_duration_<numberBetween(1,4)>"
       - "@event_<current()>"
+
+  occurrence_searchable_{1..3}:
+    __construct:
+      - null
+      - <dateTimeBetween('-14 days', '14 days')>
+      - "@occurrence_duration_<numberBetween(1,4)>"
+      - "@event_<current()>"

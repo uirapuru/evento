@@ -7,6 +7,7 @@ use AppBundle\Command\CreateWorkshop;
 use AppBundle\Command\UpdateLesson;
 use AppBundle\Command\UpdateWorkshop;
 use AppBundle\Controller\Helper\WorkshopsJsonWrapper;
+use AppBundle\DTO\SearchFilter;
 use AppBundle\Entity\Workshop;
 use Carbon\Carbon;
 use DateTime;
@@ -101,16 +102,11 @@ class DefaultController extends Controller
      * @return array
      */
     public function searchAction(Request $request){
-        $repository = $this->get("app.repository.workshop");
         $cities = $this->get("app.repository.lesson")->getUniqueCities();
+        $page = (int) $request->get("page", 1);
 
-        $page = $request->get("page", 1);
-
-        $form = $this->createForm("search_workshop",
-            [
-                "startDate" => Carbon::parse("now"),
-                "endDate"   => Carbon::parse("+1 month")
-            ],
+        $searchFilter = new SearchFilter();
+        $form = $this->createForm("search_workshop", $searchFilter,
             [
                 "action" => $this->generateUrl("evento_search"),
                 "method" => "GET",
@@ -121,19 +117,18 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted()) {
-            $results = [];
-
             if($form->isValid())
             {
-                $results = $repository->search($form->getData());
+                $searchFilter = $form->getData();
             }
-        } else {
-            $results = $repository->findAllPaginated($page, 1);
         }
+
+        $searchResults = $this->get("app.provider.search")->search($searchFilter, $page, 10);
 
         return [
             "form" => $form->createView(),
-            "results" => $results
+            "results" => $searchResults->results,
+            "pagination" => $searchResults->pagination
         ];
     }
 

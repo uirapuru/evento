@@ -1,6 +1,6 @@
 ---
 AppBundle\Entity\Workshop:
-  workshop_{1..10}:
+  workshop_{1..100}:
     title:              "[wstitle] <sentence(5)>"
     description:        "[wsdesc] <text(500)>"
     user:               ~
@@ -8,4 +8,15 @@ AppBundle\Entity\Workshop:
     phone:              <phoneNumber()>
     email:              <email()>
     slug:               <slug()>
-    calendar (unique):  @calendar_<current()>
+    calendar:           @calendar_<current()>
+
+  workshop_searchable:
+    title:              "should be found using criteria"
+    description:        "it's really working!"
+    user:               ~
+    url:                <url()>
+    phone:              <phoneNumber()>
+    email:              <email()>
+    slug:               <slug()>
+    calendar:           @calendar_searchable
+

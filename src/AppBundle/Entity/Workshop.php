@@ -174,11 +174,15 @@ class Workshop
     }
 
     public function getStartDate(){
-        return min($this->getLessonsDates());
+        if($this->lessons->count() > 0) {
+            return min($this->getLessonsDates());
+        }
     }
 
     public function getEndDate(){
-        return max($this->getLessonsDates());
+        if($this->lessons->count() > 0) {
+            return max($this->getLessonsDates());
+        }
     }
 
     private function getLessonsDates()
@@ -189,6 +193,8 @@ class Workshop
     }
 
     public function getCity(){
-        return $this->lessons->first()->getCity();
+        if($this->lessons->count() > 0) {
+            return $this->lessons->first()->getCity();
+        }
     }
 }

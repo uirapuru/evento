@@ -20,10 +20,21 @@ Dende\Calendar\Domain\Calendar\Event\Repetitions (local):
       - []
 
 Dende\Calendar\Domain\Calendar\Event:
-  event_{1..256}:
+  event_{1..350}:
     __construct:
       - null
-      - "@calendar_<numberBetween(1,10)>"
+      - "@calendar_<numberBetween(1,100)>"
+      - "@event_type_1"
+      - <dateTimeBetween('-14 days', '0 days')>
+      - <dateTimeBetween('0 days','+14 days')>
+      - <sentence(5)>
+      - "@repetition_1"
+      - "@event_duration_<numberBetween(1,4)>"
+
+  event_searchable_{1..3}:
+    __construct:
+      - null
+      - "@calendar_searchable"
       - "@event_type_1"
       - <dateTimeBetween('-14 days', '0 days')>
       - <dateTimeBetween('0 days','+14 days')>

@@ -3,14 +3,7 @@
 {% block body %}
     <div class="jumbotron">
 
-        {{ form_start(form) }}
-        {{ form_row(form.search) }}
-        <strong>LUB</strong>
-        {{ form_row(form.city) }}
-        <strong>LUB</strong>
-        {{ form_row(form.startDate) }}
-        {{ form_row(form.endDate) }}
-        {{ form_end(form) }}
+        {{ form(form) }}
 
         {#<div>#}
             {#<span class="badge">Wrocław</span>#}
@@ -30,15 +23,15 @@
         {#</div>#}
     </div>
 
-    <h3>Wyniki:</h3>
+    <h3>{% if pagination.getPaginationData.totalCount > 0 %}Wyniki ({{ pagination.getPaginationData.totalCount }}):{% else %}Brak wyników{% endif %}</h3>
     <div class="row marketing">
-        {{ knp_pagination_render(results) }}
-        {% for workshop in results %}
+        {{ knp_pagination_render(pagination) }}
+        {% for workshop in pagination %}
         <div class="col-lg-12">
             <h4>
                 <a href="{{ path("evento_show", {slug: workshop.slug}) }}">
-                    {{ workshop.city }},
-                    {{ workshop.startDate|date("d.m.Y") }}
+                    {{ workshop.lessons[0].city }},
+                    {{ workshop.lessons[0].startDate|date("d.m.Y") }}
                 </a>
             </h4>
             <p>{{ workshop.title }}</p>

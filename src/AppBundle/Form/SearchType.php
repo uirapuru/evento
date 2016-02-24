@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\DTO\SearchFilter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,11 +25,13 @@ class SearchType extends AbstractType
             ])
             ->add("startDate", "date", [
                 "widget" => "single_text",
-                "label" => "Pomiędzy"
+                "label" => "Pomiędzy",
+                "required" => false,
             ])
             ->add("endDate", "date", [
                 "widget" => "single_text",
-                "label" => "a"
+                "label" => "a",
+                "required" => false,
             ])
             ->add("submit", "submit", [
                 "label" => "Filtruj"
@@ -39,7 +42,8 @@ class SearchType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            "cities" => []
+            "cities" => [],
+            "data_class" => SearchFilter::class
         ]);
     }
 

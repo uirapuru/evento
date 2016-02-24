@@ -38,8 +38,6 @@ services:
     factory: [@doctrine.orm.entity_manager, getRepository]
     arguments:
       - %workshop.class%
-    calls:
-      - [setPaginator, [@knp_paginator]]
 
   app.repository.lesson:
     class: AppBundle\Entity\LessonRepository
@@ -90,14 +88,26 @@ services:
     arguments:
       - @app.repository.workshop
 
+  app.generator.capoeira_words_workshop_slug:
+    class: AppBundle\Generator\CapoeiraWordsSlugGenerator
+    arguments:
+      - @app.repository.workshop
+
   app.factory.workshop:
     class: AppBundle\Factory\WorkshopFactory
     arguments:
       - @app.generator.null
-      - @app.generator.workshop_slug
+      - @app.generator.capoeira_words_workshop_slug
 
   app.factory.lesson:
     class: AppBundle\Factory\LessonFactory
     arguments:
       - @app.generator.null
       - @app.repository.lesson
+
+  app.provider.search:
+    class: AppBundle\DataProvider\SearchResults
+    arguments:
+      - @app.repository.workshop
+      - @app.repository.lesson
+      - @knp_paginator

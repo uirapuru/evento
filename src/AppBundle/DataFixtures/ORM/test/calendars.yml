@@ -1,6 +1,11 @@
 ---
 Dende\Calendar\Domain\Calendar:
-  calendar_{1..10}:
+  calendar_{1..100}:
+    __construct:
+      - null
+      - <sentence(2)>
+
+  calendar_searchable:
     __construct:
       - null
       - <sentence(2)>
